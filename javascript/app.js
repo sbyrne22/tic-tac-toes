@@ -9,22 +9,34 @@ $( () => {
   $('.container').append($column2);
   $('.container').append($column3);
 
-  const littleBoard = (/*column, boardId, sqClass, sqId*/) => {
-    const $makeBoard = $('<div>').addClass('main-board');
-    $column1.append($makeBoard);
+  const makeBoard = (column, boardId, sqId) => { //creates 1 board
+    const $boardDiv = $('<div>').addClass('main-board').attr('id', boardId);
+    column.append($boardDiv);
     for (let i = 0; i < 9; i ++) {
-      let id = 'sq-' + (i + 1);
-      id.toString();
-      let $square = $('<div>').addClass('square').attr('id', id);
 
-      $makeBoard.append($square);
+      sqId += i + 1;
+      // sqId.toString();
+      console.log(sqId);
+      let positionClass = 'sq-' + (i + 1);
+      let $square = $('<div>').addClass('square').addClass(positionClass).attr('id', sqId);
+      $boardDiv.append($square);
     }
   }
 
-  littleBoard();
-  // littleBoard($column1, 'board-1', 'squareb-1', 'sq-');
-  // littleBoard($column2, 'board-2', 'squareb-1', 'sq-');
+  const makeColumn = () => { //Makes 3 columns with 3 boards in each column
+    for (let c = 0; c < 3; c++) {
+      makeBoard($column1, ('c-1-board-' + (c + 1)), ('c1-B' + (c + 1) + '-Sq-'));
+      makeBoard($column2, ('c-2-board-' + (c + 1)));
+      makeBoard($column3, ('c-3-board-' + (c + 1)));
+    }
+  }
 
+  // const make9Boards = () => {
+  //   for (let b = 0; b < 9; b++) {
+  //
+  //   }
+  // }
+makeColumn();
 
 //Variables
   const $place = $('.square');
