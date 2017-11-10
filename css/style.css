@@ -18,13 +18,15 @@ body {
   display: flex;
   flex-direction: column;
   /*overflow: scroll;*/
+  border: 1px solid purple;
+  margin: 0 auto;
 }
 
 
-.board {
+.main-board {
   border: 1px solid blue;
-  height: 100px;
-  width: 100px;
+  height: 92px;
+  width: 92px;
   box-sizing: border-box;
   margin: 50px auto 0 auto;
   display: inline-block;
