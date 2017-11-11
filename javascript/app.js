@@ -31,12 +31,48 @@ $( () => {
 
 makeRow();
 
-
+//============================
+//= if statemesnts Game logic=
+//============================
+  // if (event.currentTarget === $('.sq-1') {
+  //   runBoard1Row1();
+  // } else if (event.currentTarget === $('.sq-2') {
+  //   runBoard2Row1();
+  // } else if (event.currentTarget === $('.sq-3') {
+  //   runBoard3Row1();
+  // } else if (event.currentTarget === $('.sq-4') {
+  //   runBoard1Row2();
+  // } else if (event.currentTarget === $('.sq-5') {
+  //   runBoard2Row2();
+  // } else if (event.currentTarget === $('.sq-6') {
+  //   runBoard3Row2();
+  // } else if (event.currentTarget === $('.sq-7') {
+  //   runBoard1Row3();
+  // } else if (event.currentTarget === $('.sq-8') {
+  //   runBoard2Row3();
+  // } else if (event.currentTarget === $('.sq-9') {
+  //   runBoard3Row3();
+  // }
+//================================
+//= End if statemesnts Game logic=
+//================================
 
 
 //Variables
   const $squares = $('.square');
   let toggle = true;
+//Boards
+  const $r1B1 = $('#r-1-board-1');
+  const $r1B2 = $('#r-1-board-2');
+  const $r1B3 = $('#r-1-board-3');
+  const $r2B1 = $('#r-2-board-1');
+  const $r2B2 = $('#r-2-board-2');
+  const $r2B3 = $('#r-2-board-3');
+  const $r3B1 = $('#r-3-board-1');
+  const $r3B2 = $('#r-3-board-2');
+  const $r3B3 = $('#r-3-board-3');
+
+//Squares
   //-------Row1-Board1---------
   const $r1B1Square1 = $('#r1-B1-Sq-1');
   const $r1B1Square2 = $('#r1-B1-Sq-2');
@@ -50,27 +86,99 @@ makeRow();
   let row1Board1Clicks = 0;
 
   //-------Row1-Board2---------
+  const $r1B2Square1 = $('#r1-B2-Sq-1');
+  const $r1B2Square2 = $('#r1-B2-Sq-2');
+  const $r1B2Square3 = $('#r1-B2-Sq-3');
+  const $r1B2Square4 = $('#r1-B2-Sq-4');
+  const $r1B2Square5 = $('#r1-B2-Sq-5');
+  const $r1B2Square6 = $('#r1-B2-Sq-6');
+  const $r1B2Square7 = $('#r1-B2-Sq-7');
+  const $r1B2Square8 = $('#r1-B2-Sq-8');
+  const $r1B2Square9 = $('#r1-B2-Sq-9');
   let row1Board2Clicks = 0;
 
   //-------Row1-Board3---------
+  const $r1B3Square1 = $('#r1-B3-Sq-1');
+  const $r1B3Square2 = $('#r1-B3-Sq-2');
+  const $r1B3Square3 = $('#r1-B3-Sq-3');
+  const $r1B3Square4 = $('#r1-B3-Sq-4');
+  const $r1B3Square5 = $('#r1-B3-Sq-5');
+  const $r1B3Square6 = $('#r1-B3-Sq-6');
+  const $r1B3Square7 = $('#r1-B3-Sq-7');
+  const $r1B3Square8 = $('#r1-B3-Sq-8');
+  const $r1B3Square9 = $('#r1-B3-Sq-9');
   let row1Board3Clicks = 0;
 
   //-------Row2-Board1---------
+  const $r2B1Square1 = $('#r2-B1-Sq-1');
+  const $r2B1Square2 = $('#r2-B1-Sq-2');
+  const $r2B1Square3 = $('#r2-B1-Sq-3');
+  const $r2B1Square4 = $('#r2-B1-Sq-4');
+  const $r2B1Square5 = $('#r2-B1-Sq-5');
+  const $r2B1Square6 = $('#r2-B1-Sq-6');
+  const $r2B1Square7 = $('#r2-B1-Sq-7');
+  const $r2B1Square8 = $('#r2-B1-Sq-8');
+  const $r2B1Square9 = $('#r2-B1-Sq-9');
   let row2Board1Clicks = 0;
 
   //-------Row2-Board2---------
+  const $r2B2Square1 = $('#r2-B2-Sq-1');
+  const $r2B2Square2 = $('#r2-B2-Sq-2');
+  const $r2B2Square3 = $('#r2-B2-Sq-3');
+  const $r2B2Square4 = $('#r2-B2-Sq-4');
+  const $r2B2Square5 = $('#r2-B2-Sq-5');
+  const $r2B2Square6 = $('#r2-B2-Sq-6');
+  const $r2B2Square7 = $('#r2-B2-Sq-7');
+  const $r2B2Square8 = $('#r2-B2-Sq-8');
+  const $r2B2Square9 = $('#r2-B2-Sq-9');
   let row2Board2Clicks = 0;
 
   //-------Row2-Board3---------
+  const $r2B3Square1 = $('#r2-B3-Sq-1');
+  const $r2B3Square2 = $('#r2-B3-Sq-2');
+  const $r2B3Square3 = $('#r2-B3-Sq-3');
+  const $r2B3Square4 = $('#r2-B3-Sq-4');
+  const $r2B3Square5 = $('#r2-B3-Sq-5');
+  const $r2B3Square6 = $('#r2-B3-Sq-6');
+  const $r2B3Square7 = $('#r2-B3-Sq-7');
+  const $r2B3Square8 = $('#r2-B3-Sq-8');
+  const $r2B3Square9 = $('#r2-B3-Sq-9');
   let row2Board3Clicks = 0;
 
   //-------Row3-Board1---------
+  const $r3B1Square1 = $('#r3-B1-Sq-1');
+  const $r3B1Square2 = $('#r3-B1-Sq-2');
+  const $r3B1Square3 = $('#r3-B1-Sq-3');
+  const $r3B1Square4 = $('#r3-B1-Sq-4');
+  const $r3B1Square5 = $('#r3-B1-Sq-5');
+  const $r3B1Square6 = $('#r3-B1-Sq-6');
+  const $r3B1Square7 = $('#r3-B1-Sq-7');
+  const $r3B1Square8 = $('#r3-B1-Sq-8');
+  const $r3B1Square9 = $('#r3-B1-Sq-9');
   let row3Board1Clicks = 0;
 
   //-------Row3-Board2---------
+  const $r3B2Square1 = $('#r3-B2-Sq-1');
+  const $r3B2Square2 = $('#r3-B2-Sq-2');
+  const $r3B2Square3 = $('#r3-B2-Sq-3');
+  const $r3B2Square4 = $('#r3-B2-Sq-4');
+  const $r3B2Square5 = $('#r3-B2-Sq-5');
+  const $r3B2Square6 = $('#r3-B2-Sq-6');
+  const $r3B2Square7 = $('#r3-B2-Sq-7');
+  const $r3B2Square8 = $('#r3-B2-Sq-8');
+  const $r3B2Square9 = $('#r3-B2-Sq-9');
   let row3Board2Clicks = 0;
 
-  //-------Row3-Board3--------- 
+  //-------Row3-Board3---------
+  const $r3B3Square1 = $('#r3-B3-Sq-1');
+  const $r3B3Square2 = $('#r3-B3-Sq-2');
+  const $r3B3Square3 = $('#r3-B3-Sq-3');
+  const $r3B3Square4 = $('#r3-B3-Sq-4');
+  const $r3B3Square5 = $('#r3-B3-Sq-5');
+  const $r3B3Square6 = $('#r3-B3-Sq-6');
+  const $r3B3Square7 = $('#r3-B3-Sq-7');
+  const $r3B3Square8 = $('#r3-B3-Sq-8');
+  const $r3B3Square9 = $('#r3-B3-Sq-9');
   let row3Board3Clicks = 0;
 
   const gamePlay = (sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount) => {
@@ -90,7 +198,6 @@ makeRow();
       } else {
         return false;
       };
-
 
       if (sq1.text() !== '' && sq2.text() !== '' && sq3.text() !== '') {
         if(sq1.text() === sq2.text() && sq1.text() === sq3.text()) {
@@ -186,196 +293,117 @@ makeRow();
       }
   };
 
+  const boardDirectory = () => {
+    if (event.currentTarget === $('.sq-1')) {
+      runBoard1Row1();
+    } else if (event.currentTarget === $('.sq-2')) {
+      runBoard2Row1();
+    } else if (event.currentTarget === $('.sq-3')) {
+      runBoard3Row1();
+    } else if (event.currentTarget === $('.sq-4')) {
+      runBoard1Row2();
+    } else if (event.currentTarget === $('.sq-5')) {
+      runBoard2Row2();
+    } else if (event.currentTarget === $('.sq-6')) {
+      runBoard3Row2();
+    } else if (event.currentTarget === $('.sq-7')) {
+      runBoard1Row3();
+    } else if (event.currentTarget === $('.sq-8')) {
+      runBoard2Row3();
+    } else if (event.currentTarget === $('.sq-9')) {
+      runBoard3Row3();
+    }
+  };
+
+  const greyOut = (highlightedB, b1, b2, b3, b4 , b5 , b6 , b7, b8) => { //Grey's out the squares of the boards that are not in play, and hoghlights the one that is
+  highlightedB.css('background', 'yellow');
+
+  b1.children().css('background', 'grey');
+  b2.children().css('background', 'grey');
+  b3.children().css('background', 'grey');
+  b4.children().css('background', 'grey');
+  b5.children().css('background', 'grey');
+  b6.children().css('background', 'grey');
+  b7.children().css('background', 'grey');
+  b8.children().css('background', 'grey');
+  }
+
 const runBoard1Row1 = () => {
+  greyOut($r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r1B1Square1, $r1B1Square2, $r1B1Square3, $r1B1Square4, $r1B1Square5, $r1B1Square6, $r1B1Square7, $r1B1Square8, $r1B1Square9, row1Board1Clicks);
   });
 };
 
 const runBoard2Row1 = () => {
+  greyOut($r1B2, $r1B1, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r1B2Square1, $r1B2Square2, $r1B2Square3, $r1B2Square4, $r1B2Square5, $r1B2Square6, $r1B2Square7, $r1B2Square8, $r1B2Square9, row1Board2Clicks);
   });
 };
 
 const runBoard3Row1 = () => {
+  greyOut($r1B3, $r1B1, $r1B2, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r1B3Square1, $r1B3Square2, $r1B3Square3, $r1B3Square4, $r1B3Square5, $r1B3Square6, $r1B3Square7, $r1B3Square8, $r1B3Square9, row1Board3Clicks);
   });
 };
 
 const runBoard1Row2 = () => {
+  greyOut($r2B1, $r1B1, $r1B2, $r1B3, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r2B1Square1, $r2B1Square2, $r2B1Square3, $r2B1Square4, $r2B1Square5, $r2B1Square6, $r2B1Square7, $r2B1Square8, $r2B1Square9, row2Board1Clicks);
   });
 }
 
 const runBoard2Row2 = () => {
+  greyOut($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r2B2Square1, $r2B2Square2, $r2B2Square3, $r2B2Square4, $r2B2Square5, $r2B2Square6, $r2B2Square7, $r2B2Square8, $r2B2Square9, row2Board2Clicks);
   });
 }
 
 const runBoard3Row2 = () => {
+  greyOut($r2B3, $r1B1, $r1B2, $r1B3, $r2B2, $r2B1, $r3B1, $r3B2, $r3B3);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r2B3Square1, $r2B3Square2, $r2B3Square3, $r2B3Square4, $r2B3Square5, $r2B3Square6, $r2B3Square7, $r2B3Square8, $r2B3Square9, row2Board3Clicks);
   });
 }
 
 const runBoard1Row3 = () => {
+  greyOut($r3B1, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B2, $r3B3);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r3B1Square1, $r3B1Square2, $r3B1Square3, $r3B1Square4, $r3B1Square5, $r3B1Square6, $r3B1Square7, $r3B1Square8, $r3B1Square9, row3Board1Clicks);
   });
 }
 
 const runBoard2Row3 = () => {
+  greyOut($r3B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B3);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r3B2Square1, $r3B2Square2, $r3B2Square3, $r3B2Square4, $r3B2Square5, $r3B2Square6, $r3B2Square7, $r3B2Square8, $r3B2Square9, row3Board2Clicks);
   });
 }
 
 const runBoard3Row3 = () => {
+  greyOut($r3B3, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2);
   $squares.on('click', () => {
+    boardDirectory();
     gamePlay($r3B3Square1, $r3B3Square2, $r3B3Square3, $r3B3Square4, $r3B3Square5, $r3B3Square6, $r3B3Square7, $r3B3Square8, $r3B3Square9, row3Board3Clicks);
   });
 }
 
 const startGame = () => {
-  runBoard1Row1();
-
-  // if () {
-  //   $place.on('click', gamePlay);
-  // }
-  // if () {
-  //   $place.on('click', gamePlay);
-  // }
-  // if () {
-  //   $place.on('click', boardThree);
-  // }
-  // if () {
-  //   $place.on('click', boardFour);
-  // }
-  // if () {
-  //   $place.on('click', boardFive);
-  // }
-  // if () {
-  //   $place.on('click', boardSix);
-  // }
-  // if () {
-  //   $place.on('click', boardSeven);
-  // }
-  // if () {
-  //   $place.on('click', boardEight);
-  // }
-  // if () {
-  //   $place.on('click', boardNine);
-  // }
+  runBoard2Row2();
 };
+
 startGame();
+
 });
-
-
-
-
-//------------------------------------------Past Attempts
-
-// for (i = 0; i < 9; i++) {
-
-  // if (i < 3){ //creates boards in column 1
-  //   let boardId = 'board-column-1-' + (i + 1);
-  //   boardId.toString();
-  //   let $boardColumn1 = $('<div>').addClass('board').attr('id', boardId);
-  //   $column1.append($boardColumn1);
-  //
-  //   if (i === 0) { //Create board 1 in column 1
-  //   for (let b=0; b<9; b++){
-  //     let id = 'sq-board-1-' + (b + 1);
-  //     id.toString();
-  //       let $square = $('<div>').addClass('square').attr('id', id);
-  //         $boardColumn1.append($square);
-  //     }
-  //   }
-  //   if (i === 1) { //Create board 2 in column 1
-  //   for (let b=0; b<9; b++){
-  //     let id = 'sq-board-2-' + (b + 1);
-  //     id.toString();
-  //       let $square = $('<div>').addClass('square').attr('id', id);
-  //         $boardColumn1.append($square);
-  //     }
-  //   }
-  //   if (i === 2) { //Create board 3 in column 1
-  //   for (let b=0; b<9; b++){
-  //     let id = 'sq-board-3-' + (b + 1);
-  //     id.toString();
-  //       let $square = $('<div>').addClass('square').attr('id', id);
-  //         $boardColumn1.append($square);
-  //     }
-  //   }
-  // } else if (i < 6){ //creates boards in column 2
-  //     let boardId = 'board-column-2-' + (i + 1);
-  //     boardId.toString();
-  //     let $boardColumn1 = $('<div>').addClass('board').attr('id', boardId);
-  //     $column2.append($boardColumn1);
-  //
-  //     if (i === 0) { //Create board 1 in column 2
-  //     for (let b=0; b<9; b++){
-  //       let id = 'sq-board-1-' + (b + 1);
-  //       id.toString();
-  //         let $square = $('<div>').addClass('square').attr('id', id);
-  //           $boardColumn1.append($square);
-  //       }
-  //     }
-  //     if (i === 1) { //Create board 2 in column 2
-  //     for (let b=0; b<9; b++){
-  //       let id = 'sq-board-2-' + (b + 1);
-  //       id.toString();
-  //         let $square = $('<div>').addClass('square').attr('id', id);
-  //           $boardColumn1.append($square);
-  //       }
-  //     }
-  //     if (i === 2) { //Create board 3 in column 2
-  //     for (let b=0; b<9; b++){
-  //       let id = 'sq-board-3-' + (b + 1);
-  //       id.toString();
-  //         let $square = $('<div>').addClass('square').attr('id', id);
-  //           $boardColumn1.append($square);
-  //       }
-  //     }
-  //   } else if (i < 9){ //creates boards in column 3
-  //       let boardId = 'board-column-3-' + (i + 1);
-  //       boardId.toString();
-  //       let $boardColumn1 = $('<div>').addClass('board').attr('id', boardId);
-  //       $column1.append($boardColumn1);
-  //
-  //       if (i === 0) { //Create board 1 in column 3
-  //       for (let b=0; b<9; b++){
-  //         let id = 'sq-board-1-' + (b + 1);
-  //         id.toString();
-  //           let $square = $('<div>').addClass('square').attr('id', id);
-  //             $boardColumn1.append($square);
-  //         }
-  //       }
-  //       if (i === 1) { //Create board 2 in column 3
-  //       for (let b=0; b<9; b++){
-  //         let id = 'sq-board-2-' + (b + 1);
-  //         id.toString();
-  //           let $square = $('<div>').addClass('square').attr('id', id);
-  //             $boardColumn1.append($square);
-  //         }
-  //       }
-  //       if (i === 2) { //Create board 3 in column 3
-  //       for (let b=0; b<9; b++){
-  //         let id = 'sq-board-3-' + (b + 1);
-  //         id.toString();
-  //           let $square = $('<div>').addClass('square').attr('id', id);
-  //             $boardColumn1.append($square);
-  //       }
-  //     }
-  //   }
-// };
-// for (let i=0; i<9; i++){
-//   let id = 'id' + (i + 1);
-//   id.toString();
-//     let $square = $('<div>').addClass('square').attr('id', id);
-//       $('.board').append($square);
-// }
