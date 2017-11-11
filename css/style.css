@@ -24,11 +24,12 @@ body {
 
 
 .main-board {
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
   height: 92px;
   width: 92px;
   box-sizing: border-box;
-  margin: 50px auto 0 auto;
+  /*margin: 50px auto 0 auto;*/
+  margin: 10px;
   display: inline-block;
 }
 .square {
