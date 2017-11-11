@@ -182,19 +182,24 @@ makeRow();
   let row3Board3Clicks = 0;
 
   const gamePlay = (sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount) => {
-    if ($(event.currentTarget).text() === '') {
-      clickCount += 1;
-      console.log(clickCount);
+    // console.log($(event.currentTarget).parent());
+    // if ($(event.currentTarget).parent().attr('value') === true) {
+      if ($(event.currentTarget).text() === '') {
+        clickCount += 1;
+        console.log(clickCount);
 
-      if (toggle === true) {
-        // console.log('I was clicked');
-        $(event.currentTarget).text('x');
-        toggle = false;
-      } else if (toggle === false) {
-        $(event.currentTarget).text('o');
-        toggle = true;
-      }
-
+        if ($(event.target).parent().attr('value') === 'true') {
+          if (toggle === true) {
+            // console.log('I was clicked');
+            $(event.currentTarget).text('x');
+            toggle = false;
+          } else if (toggle === false) {
+            $(event.currentTarget).text('o');
+            toggle = true;
+          }
+        } else {
+          console.log('What!');
+        }
       } else {
         return false;
       };
@@ -202,10 +207,10 @@ makeRow();
       if (sq1.text() !== '' && sq2.text() !== '' && sq3.text() !== '') {
         if(sq1.text() === sq2.text() && sq1.text() === sq3.text()) {
           if (toggle === false){
-            alert("X's Win!")
+            alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            alert("O's Win!")
+            alert("O's Win!");
             console.log("you Win");
           }
         }
@@ -213,10 +218,10 @@ makeRow();
       if (sq4.text() !== '' && sq5.text() !== '' && sq6.text() !== '') {
         if(sq4.text() === sq5.text() && sq4.text() === sq6.text()) {
           if (toggle === false){
-            alert("X's Win!")
+            alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            alert("O's Win!")
+            alert("O's Win!");
             console.log("you Win");
           }
         }
@@ -224,10 +229,10 @@ makeRow();
       if (sq7.text() !== '' && sq8.text() !== '' && sq9.text() !== '') {
         if(sq7.text() === sq8.text() && sq7.text() === sq9.text()) {
           if (toggle === false){
-            alert("X's Win!")
+            alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            alert("O's Win!")
+            alert("O's Win!");
             console.log("you Win");
           }
         }
@@ -235,10 +240,10 @@ makeRow();
       if (sq1.text() !== '' && sq4.text() !== '' && sq7.text() !== '') {
         if(sq1.text() === sq4.text() && sq1.text() === sq7.text()) {
           if (toggle === false){
-            alert("X's Win!")
+            alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            alert("O's Win!")
+            alert("O's Win!");
             console.log("you Win");
           }
         }
@@ -246,10 +251,10 @@ makeRow();
       if (sq2.text() !== '' && sq5.text() !== '' && sq8.text() !== '') {
         if(sq2.text() === sq5.text() && sq2.text() === sq8.text()) {
           if (toggle === false){
-            alert("X's Win!")
+            alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            alert("O's Win!")
+            alert("O's Win!");
             console.log("you Win");
           }
         }
@@ -257,10 +262,10 @@ makeRow();
       if (sq3.text() !== '' && sq6.text() !== '' && sq9.text() !== '') {
         if(sq3.text() === sq6.text() && sq3.text() === sq9.text()) {
           if (toggle === false){
-            alert("X's Win!")
+            alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            alert("O's Win!")
+            alert("O's Win!");
             console.log("you Win");
           }
         }
@@ -268,136 +273,195 @@ makeRow();
       if (sq1.text() !== '' && sq5.text() !== '' && sq9.text() !== '') {
         if(sq1.text() === sq5.text() && sq1.text() === sq9.text()) {
           if (toggle === false){
-            alert("X's Win!")
+            alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            alert("O's Win!")
+            alert("O's Win!");
             console.log("you Win");
           }
-
         }
       }
       if (sq3.text() !== '' && sq5.text() !== '' && sq7.text() !== '') {
         if(sq3.text() === sq5.text() && sq3.text() === sq7.text()) {
           if (toggle === false){
-            alert("X's Win!")
+            alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            alert("O's Win!")
+            alert("O's Win!");
             console.log("you Win");
           }
         }
       }
+
       if (clickCount === 9) {
         alert('Tie');
-      }
+      };
+    // };
   };
 
   const boardDirectory = () => {
-    if (event.currentTarget === $('.sq-1')) {
+
+
+    if ($(event.currentTarget).hasClass('sq-1')) {
+
       runBoard1Row1();
-    } else if (event.currentTarget === $('.sq-2')) {
+    } else if ($(event.currentTarget).hasClass('sq-2')) {
       runBoard2Row1();
-    } else if (event.currentTarget === $('.sq-3')) {
+    } else if ($(event.currentTarget).hasClass('sq-3')) {
       runBoard3Row1();
-    } else if (event.currentTarget === $('.sq-4')) {
+    } else if ($(event.currentTarget).hasClass('sq-4')) {
       runBoard1Row2();
-    } else if (event.currentTarget === $('.sq-5')) {
+    } else if ($(event.currentTarget).hasClass('sq-5')) {
       runBoard2Row2();
-    } else if (event.currentTarget === $('.sq-6')) {
+    } else if ($(event.currentTarget).hasClass('sq-6')) {
       runBoard3Row2();
-    } else if (event.currentTarget === $('.sq-7')) {
+    } else if ($(event.currentTarget).hasClass('sq-7')) {
       runBoard1Row3();
-    } else if (event.currentTarget === $('.sq-8')) {
+    } else if ($(event.currentTarget).hasClass('sq-8')) {
       runBoard2Row3();
-    } else if (event.currentTarget === $('.sq-9')) {
+    } else if ($(event.currentTarget).hasClass('sq-9')) {
       runBoard3Row3();
     }
   };
 
-  const greyOut = (highlightedB, b1, b2, b3, b4 , b5 , b6 , b7, b8) => { //Grey's out the squares of the boards that are not in play, and hoghlights the one that is
-  highlightedB.css('background', 'yellow');
+  const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's out the squares of the boards that are not in play, and hoghlights the one that is as well as make it active
+    highlightedB.css('background', 'yellow');
+    highlightedB.children().css('background', 'white');
+    // highlightedB.attr('value', 'active')
 
-  b1.children().css('background', 'grey');
-  b2.children().css('background', 'grey');
-  b3.children().css('background', 'grey');
-  b4.children().css('background', 'grey');
-  b5.children().css('background', 'grey');
-  b6.children().css('background', 'grey');
-  b7.children().css('background', 'grey');
-  b8.children().css('background', 'grey');
-  }
+    b2.children().css('background', 'grey');
+      b2.css('background', 'none');
+      // b2.attr('value', 'inActive');
+
+    b3.children().css('background', 'grey');
+      b3.css('background', 'none');
+      // b3.attr('value', 'inActive');
+
+    b4.children().css('background', 'grey');
+      b4.css('background', 'none');
+      // b4.attr('value', 'inActive');
+
+    b5.children().css('background', 'grey');
+      b5.css('background', 'none');
+      // b5.attr('value', 'inActive');
+
+    b6.children().css('background', 'grey');
+      b6.css('background', 'none');
+      // b6.attr('value', 'inActive');
+
+    b7.children().css('background', 'grey');
+      b7.css('background', 'none');
+      // b7.attr('value', 'inActive');
+
+    b8.children().css('background', 'grey');
+      b8.css('background', 'none');
+      // b8.attr('value', 'inActive');
+
+    b9.children().css('background', 'grey');
+      b9.css('background', 'none');
+      // b9.attr('value', 'inActive');
+  };
+
+  const changeActive = (activeBoard, b2, b3, b4, b5, b6, b7, b8, b9) => {
+    activeBoard.attr('value', 'true')
+
+    b2.attr('value', 'false')
+    b3.attr('value', 'false')
+    b4.attr('value', 'false')
+    b5.attr('value', 'false')
+    b6.attr('value', 'false')
+    b7.attr('value', 'false')
+    b8.attr('value', 'false')
+    b9.attr('value', 'false')
+  };
 
 const runBoard1Row1 = () => {
   greyOut($r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
-  $squares.on('click', () => {
+  changeActive($r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
+  // $squares.on('click', () => {
     boardDirectory();
     gamePlay($r1B1Square1, $r1B1Square2, $r1B1Square3, $r1B1Square4, $r1B1Square5, $r1B1Square6, $r1B1Square7, $r1B1Square8, $r1B1Square9, row1Board1Clicks);
-  });
+  // });
 };
 
 const runBoard2Row1 = () => {
   greyOut($r1B2, $r1B1, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
-  $squares.on('click', () => {
+  changeActive($r1B2, $r1B1, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
+  // $squares.on('click', () => {
     boardDirectory();
     gamePlay($r1B2Square1, $r1B2Square2, $r1B2Square3, $r1B2Square4, $r1B2Square5, $r1B2Square6, $r1B2Square7, $r1B2Square8, $r1B2Square9, row1Board2Clicks);
-  });
+  // });
 };
 
 const runBoard3Row1 = () => {
   greyOut($r1B3, $r1B1, $r1B2, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
-  $squares.on('click', () => {
+  changeActive($r1B3, $r1B1, $r1B2, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
+  // $squares.on('click', () => {
     boardDirectory();
     gamePlay($r1B3Square1, $r1B3Square2, $r1B3Square3, $r1B3Square4, $r1B3Square5, $r1B3Square6, $r1B3Square7, $r1B3Square8, $r1B3Square9, row1Board3Clicks);
-  });
+  // });
 };
 
 const runBoard1Row2 = () => {
   greyOut($r2B1, $r1B1, $r1B2, $r1B3, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
-  $squares.on('click', () => {
+  changeActive($r2B1, $r1B1, $r1B2, $r1B3, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
+  // $squares.on('click', () => {
     boardDirectory();
     gamePlay($r2B1Square1, $r2B1Square2, $r2B1Square3, $r2B1Square4, $r2B1Square5, $r2B1Square6, $r2B1Square7, $r2B1Square8, $r2B1Square9, row2Board1Clicks);
-  });
+  // });
 }
 
 const runBoard2Row2 = () => {
   greyOut($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
-  $squares.on('click', () => {
-    boardDirectory();
-    gamePlay($r2B2Square1, $r2B2Square2, $r2B2Square3, $r2B2Square4, $r2B2Square5, $r2B2Square6, $r2B2Square7, $r2B2Square8, $r2B2Square9, row2Board2Clicks);
-  });
-}
+  changeActive($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
+
+  $squares.on('click', (event) => {
+    console.log($(event.target).parent().attr('value'));
+      if ($(event.target).parent().attr('value') === 'true'){
+        console.log('its true');
+        boardDirectory();
+        gamePlay($r2B2Square1, $r2B2Square2, $r2B2Square3, $r2B2Square4, $r2B2Square5, $r2B2Square6, $r2B2Square7, $r2B2Square8, $r2B2Square9, row2Board2Clicks);
+      } else {
+        console.log('its false');
+        return;
+      }
+    });
+};
 
 const runBoard3Row2 = () => {
   greyOut($r2B3, $r1B1, $r1B2, $r1B3, $r2B2, $r2B1, $r3B1, $r3B2, $r3B3);
-  $squares.on('click', () => {
+  changeActive($r2B3, $r1B1, $r1B2, $r1B3, $r2B2, $r2B1, $r3B1, $r3B2, $r3B3);
+  // $squares.on('click', () => {
     boardDirectory();
     gamePlay($r2B3Square1, $r2B3Square2, $r2B3Square3, $r2B3Square4, $r2B3Square5, $r2B3Square6, $r2B3Square7, $r2B3Square8, $r2B3Square9, row2Board3Clicks);
-  });
+  // });
 }
 
 const runBoard1Row3 = () => {
   greyOut($r3B1, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B2, $r3B3);
-  $squares.on('click', () => {
+  changeActive($r3B1, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B2, $r3B3);
+  // $squares.on('click', () => {
     boardDirectory();
     gamePlay($r3B1Square1, $r3B1Square2, $r3B1Square3, $r3B1Square4, $r3B1Square5, $r3B1Square6, $r3B1Square7, $r3B1Square8, $r3B1Square9, row3Board1Clicks);
-  });
+  // });
 }
 
 const runBoard2Row3 = () => {
   greyOut($r3B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B3);
-  $squares.on('click', () => {
+  changeActive($r3B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B3);
+  // $squares.on('click', () => {
     boardDirectory();
     gamePlay($r3B2Square1, $r3B2Square2, $r3B2Square3, $r3B2Square4, $r3B2Square5, $r3B2Square6, $r3B2Square7, $r3B2Square8, $r3B2Square9, row3Board2Clicks);
-  });
+  // });
 }
 
 const runBoard3Row3 = () => {
   greyOut($r3B3, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2);
-  $squares.on('click', () => {
+  changeActive($r3B3, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2);
+  // $squares.on('click', () => {
     boardDirectory();
     gamePlay($r3B3Square1, $r3B3Square2, $r3B3Square3, $r3B3Square4, $r3B3Square5, $r3B3Square6, $r3B3Square7, $r3B3Square8, $r3B3Square9, row3Board3Clicks);
-  });
+  // });
 }
 
 const startGame = () => {
