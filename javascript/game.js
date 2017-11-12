@@ -155,6 +155,8 @@ makeRow();
   const $r3B3Square9 = $('#r3-B3-Sq-9');
   let row3Board3Clicks = 0;
 
+
+
 const runGame = () => { //Game Logic
   if ($(event.currentTarget).text() === '') { //makes sure the element that is gonna be affected doesn't all ready have a text value
 
@@ -171,41 +173,43 @@ const runGame = () => { //Game Logic
           toggle = true;
         }
 
+        gamePlay();
+
         if ($(event.currentTarget).hasClass('sq-1')) {
           greyOut($r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
-          gamePlay($r1B1Square1, $r1B1Square2, $r1B1Square3, $r1B1Square4, $r1B1Square5, $r1B1Square6, $r1B1Square7, $r1B1Square8, $r1B1Square9, row1Board1Clicks);
+          // gamePlay($r1B1Square1, $r1B1Square2, $r1B1Square3, $r1B1Square4, $r1B1Square5, $r1B1Square6, $r1B1Square7, $r1B1Square8, $r1B1Square9, row1Board1Clicks);
 
         } else if ($(event.currentTarget).hasClass('sq-2')) {
           greyOut($r1B2, $r1B1, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
-          gamePlay($r1B2Square1, $r1B2Square2, $r1B2Square3, $r1B2Square4, $r1B2Square5, $r1B2Square6, $r1B2Square7, $r1B2Square8, $r1B2Square9, row1Board2Clicks);
+          // gamePlay($r1B2Square1, $r1B2Square2, $r1B2Square3, $r1B2Square4, $r1B2Square5, $r1B2Square6, $r1B2Square7, $r1B2Square8, $r1B2Square9, row1Board2Clicks);
 
         } else if ($(event.currentTarget).hasClass('sq-3')) {
           greyOut($r1B3, $r1B1, $r1B2, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
-          gamePlay($r1B3Square1, $r1B3Square2, $r1B3Square3, $r1B3Square4, $r1B3Square5, $r1B3Square6, $r1B3Square7, $r1B3Square8, $r1B3Square9, row1Board3Clicks);
+          // gamePlay($r1B3Square1, $r1B3Square2, $r1B3Square3, $r1B3Square4, $r1B3Square5, $r1B3Square6, $r1B3Square7, $r1B3Square8, $r1B3Square9, row1Board3Clicks);
 
         } else if ($(event.currentTarget).hasClass('sq-4')) {
           greyOut($r2B1, $r1B1, $r1B2, $r1B3, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
-          gamePlay($r2B1Square1, $r2B1Square2, $r2B1Square3, $r2B1Square4, $r2B1Square5, $r2B1Square6, $r2B1Square7, $r2B1Square8, $r2B1Square9, row2Board1Clicks);
+          // gamePlay($r2B1Square1, $r2B1Square2, $r2B1Square3, $r2B1Square4, $r2B1Square5, $r2B1Square6, $r2B1Square7, $r2B1Square8, $r2B1Square9, row2Board1Clicks);
 
         } else if ($(event.currentTarget).hasClass('sq-5')) {
           greyOut($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
-          gamePlay($r2B2Square1, $r2B2Square2, $r2B2Square3, $r2B2Square4, $r2B2Square5, $r2B2Square6, $r2B2Square7, $r2B2Square8, $r2B2Square9, row2Board2Clicks);
+          // gamePlay($r2B2Square1, $r2B2Square2, $r2B2Square3, $r2B2Square4, $r2B2Square5, $r2B2Square6, $r2B2Square7, $r2B2Square8, $r2B2Square9, row2Board2Clicks);
 
         } else if ($(event.currentTarget).hasClass('sq-6')) {
           greyOut($r2B3, $r1B1, $r1B2, $r1B3, $r2B2, $r2B1, $r3B1, $r3B2, $r3B3);
-          gamePlay($r2B3Square1, $r2B3Square2, $r2B3Square3, $r2B3Square4, $r2B3Square5, $r2B3Square6, $r2B3Square7, $r2B3Square8, $r2B3Square9, row2Board3Clicks);
+          // gamePlay($r2B3Square1, $r2B3Square2, $r2B3Square3, $r2B3Square4, $r2B3Square5, $r2B3Square6, $r2B3Square7, $r2B3Square8, $r2B3Square9, row2Board3Clicks);
 
         } else if ($(event.currentTarget).hasClass('sq-7')) {
           greyOut($r3B1, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B2, $r3B3);
-          gamePlay($r3B1Square1, $r3B1Square2, $r3B1Square3, $r3B1Square4, $r3B1Square5, $r3B1Square6, $r3B1Square7, $r3B1Square8, $r3B1Square9, row3Board1Clicks);
+          // gamePlay($r3B1Square1, $r3B1Square2, $r3B1Square3, $r3B1Square4, $r3B1Square5, $r3B1Square6, $r3B1Square7, $r3B1Square8, $r3B1Square9, row3Board1Clicks);
 
         } else if ($(event.currentTarget).hasClass('sq-8')) {
           greyOut($r3B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B3);
-          gamePlay($r3B2Square1, $r3B2Square2, $r3B2Square3, $r3B2Square4, $r3B2Square5, $r3B2Square6, $r3B2Square7, $r3B2Square8, $r3B2Square9, row3Board2Clicks);
+          // gamePlay($r3B2Square1, $r3B2Square2, $r3B2Square3, $r3B2Square4, $r3B2Square5, $r3B2Square6, $r3B2Square7, $r3B2Square8, $r3B2Square9, row3Board2Clicks);
 
         } else if ($(event.currentTarget).hasClass('sq-9')) {
           greyOut($r3B3, $r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2);
-          gamePlay($r3B3Square1, $r3B3Square2, $r3B3Square3, $r3B3Square4, $r3B3Square5, $r3B3Square6, $r3B3Square7, $r3B3Square8, $r3B3Square9, row3Board3Clicks);
+          // gamePlay($r3B3Square1, $r3B3Square2, $r3B3Square3, $r3B3Square4, $r3B3Square5, $r3B3Square6, $r3B3Square7, $r3B3Square8, $r3B3Square9, row3Board3Clicks);
         }
 
         //End Code Here
@@ -260,6 +264,108 @@ const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's 
       b9.removeClass('active');
 
   };
+
+//-----Game Functionality----------------
+
+const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) => {
+  //squares childen of each board
+  const $sqEq = $(event.currentTarget).parent().children();
+
+  if ($sqEq.eq(0).text() !== '' && $sqEq.eq(1).text() !== '' && $sqEq.eq(2).text() !== '') {
+        if($sqEq.eq(0).text() === $sqEq.eq(1).text() && $sqEq.eq(0).text() === $sqEq.eq(2).text()) {
+          if (toggle === false){
+            alert("X's Win!");
+            console.log("you Win");
+          } else if (toggle === true) {
+            alert("O's Win!");
+            console.log("you Win");
+          }
+        }
+      }
+      if ($sqEq.eq(3).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(5).text() !== '') {
+        if($sqEq.eq(3).text() === $sqEq.eq(4).text() && $sqEq.eq(3).text() === $sqEq.eq(5).text()) {
+          if (toggle === false){
+            alert("X's Win!");
+            console.log("you Win");
+          } else if (toggle === true) {
+            alert("O's Win!");
+            console.log("you Win");
+          }
+        }
+      }
+      if ($sqEq.eq(6).text() !== '' && $sqEq.eq(7).text() !== '' && $sqEq.eq(8).text() !== '') {
+        if($sqEq.eq(6).text() === $sqEq.eq(7).text() && $sqEq.eq(6).text() === $sqEq.eq(8).text()) {
+          if (toggle === false){
+            alert("X's Win!");
+            console.log("you Win");
+          } else if (toggle === true) {
+            alert("O's Win!");
+            console.log("you Win");
+          }
+        }
+      }
+      if ($sqEq.eq(0).text() !== '' && $sqEq.eq(3).text() !== '' && $sqEq.eq(6).text() !== '') {
+        if($sqEq.eq(0).text() === $sqEq.eq(3).text() && $sqEq.eq(0).text() === $sqEq.eq(6).text()) {
+          if (toggle === false){
+            alert("X's Win!");
+            console.log("you Win");
+          } else if (toggle === true) {
+            alert("O's Win!");
+            console.log("you Win");
+          }
+        }
+      }
+      if ($sqEq.eq(1).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(7).text() !== '') {
+        if($sqEq.eq(1).text() === $sqEq.eq(4).text() && $sqEq.eq(1).text() === $sqEq.eq(7).text()) {
+          if (toggle === false){
+            alert("X's Win!");
+            console.log("you Win");
+          } else if (toggle === true) {
+            alert("O's Win!");
+            console.log("you Win");
+          }
+        }
+      }
+      if ($sqEq.eq(2).text() !== '' && $sqEq.eq(5).text() !== '' && $sqEq.eq(8).text() !== '') {
+        if($sqEq.eq(2).text() === $sqEq.eq(5).text() && $sqEq.eq(2).text() === $sqEq.eq(8).text()) {
+          if (toggle === false){
+            alert("X's Win!");
+            console.log("you Win");
+          } else if (toggle === true) {
+            alert("O's Win!");
+            console.log("you Win");
+          }
+        }
+      }
+      if ($sqEq.eq(0).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(8).text() !== '') {
+        if($sqEq.eq(0).text() === $sqEq.eq(4).text() && $sqEq.eq(0).text() === $sqEq.eq(8).text()) {
+          if (toggle === false){
+            alert("X's Win!");
+            console.log("you Win");
+          } else if (toggle === true) {
+            alert("O's Win!");
+            console.log("you Win");
+          }
+        }
+      }
+      if ($sqEq.eq(2).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(6).text() !== '') {
+        if($sqEq.eq(2).text() === $sqEq.eq(4).text() && $sqEq.eq(2).text() === $sqEq.eq(6).text()) {
+          if (toggle === false){
+            alert("X's Win!");
+            console.log("you Win");
+          } else if (toggle === true) {
+            alert("O's Win!");
+            console.log("you Win");
+          }
+        }
+      }
+
+      if ($sqEq.eq().text !== ''){
+        console.log('Tie');
+      }
+}
+
+//-----End Game Functionality------------
 
 const newGame = () => {
   greyOut($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
