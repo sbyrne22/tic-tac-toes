@@ -156,12 +156,12 @@ makeRow();
   let row3Board3Clicks = 0;
 
 const runGame = () => { //Game Logic
-  if ($(event.currentTarget).text() === '') {
+  if ($(event.currentTarget).text() === '') { //makes sure the element that is gonna be affected doesn't all ready have a text value
 
 
     //Enter Code Here
-    if (!$(event.currentTarget).hasClass('done')) {
-      if ($(event.currentTarget).parent().hasClass('active')){
+    if (!$(event.currentTarget).parent().hasClass('done')) { //Makes sure the board that will be affected hasn't alreadu been finished (ex: there was a tie, or x's or o's won)
+      if ($(event.currentTarget).parent().hasClass('active')){ //Only the active board can be affected
 
         if (toggle === true) {
           $(event.currentTarget).text('x');
@@ -258,7 +258,7 @@ const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's 
     b9.children().removeClass('sq-active');
     b9.children().addClass('inActive');
       b9.removeClass('active');
-      
+
   };
 
 const newGame = () => {
