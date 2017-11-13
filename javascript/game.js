@@ -49,6 +49,15 @@ makeRow();
   const $allBoards = [$r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3];
 
 //Squares
+  const $sq1 = $('.sq-1');
+  const $sq2 = $('.sq-2');
+  const $sq3 = $('.sq-3');
+  const $sq4 = $('.sq-4');
+  const $sq5 = $('.sq-5');
+  const $sq6 = $('.sq-6');
+  const $sq7 = $('.sq-7');
+  const $sq8 = $('.sq-8');
+  const $sq9 = $('.sq-9');
   // //-------Row1-Board1---------
   // const $r1B1Square1 = $('#r1-B1-Sq-1');
   // const $r1B1Square2 = $('#r1-B1-Sq-2');
@@ -175,7 +184,7 @@ const runGame = () => { //Game Logic
           toggle = true;
         }
 
-
+        gamePlay();
 
         if ($(event.currentTarget).hasClass('sq-1')) {
           if (!($($r1B1).hasClass('done'))) {
@@ -242,7 +251,7 @@ const runGame = () => { //Game Logic
             varifyBoards();
           }
         }
-        gamePlay();
+
         //End Code Here
       };
     };
@@ -260,10 +269,40 @@ const varifyBoards = () => {
         board.children().addClass('sq-active');
         board.children().removeClass('inActive');
       } else {
-        return false;
+        board.children().removeClass('sq-active');
+        board.children().addClass('inActive');
+          board.removeClass('active');
       }
-    })
+    });
 }
+
+const ifWinOnParent = () => {
+
+  const $currentTarget = $(event.currentTarget);
+  const $currentTargetParent = $(event.currentTarget).parent();
+
+  if ($($currentTarget).hasClass('sq-1') && $($currentTargetParent).attr('id') === ('r-1-board-1')) { //These are not comparing?
+    varifyBoards();
+  } else if ($($currentTarget).hasClass('sq-2') && $($currentTargetParent).attr('id') === ('r-1-board-2')) {
+    varifyBoards();
+  } else if ($($currentTarget).hasClass('sq-3') && $($currentTargetParent).attr('id') === ('r-1-board-3')) {
+    varifyBoards();
+  } else if ($($currentTarget).hasClass('sq-4') && $($currentTargetParent).attr('id') === ('r-2-board-1')) {
+    varifyBoards();
+  } else if ($($currentTarget).hasClass('sq-5') && $($currentTargetParent).attr('id') === ('r-2-board-2')) {
+      console.log('Win on Parent');
+      varifyBoards();
+
+  } else if ($($currentTarget).hasClass('sq-6') && $($currentTargetParent).attr('id') === ('r-2-board-3')) {
+    varifyBoards();
+  } else if ($($currentTarget).hasClass('sq-7') && $($currentTargetParent).attr('id') === ('r-3-board-1')) {
+    varifyBoards();
+  } else if ($($currentTarget).hasClass('sq-8') && $($currentTargetParent).attr('id') === ('r-3-board-2')) {
+    varifyBoards();
+  } else if ($($currentTarget).hasClass('sq-9') && $($currentTargetParent).attr('id') === ('r-3-board-3')) {
+    varifyBoards();
+  }
+};
 
 const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's out the squares of the boards that are not in play, and hoghlights the one that is as well as make it active
 
@@ -326,25 +365,34 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(0).text() === $sqEq.eq(1).text() && $sqEq.eq(0).text() === $sqEq.eq(2).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('x');
+            // varifyBoards();
+            ifWinOnParent();
             alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('o');
+            // varifyBoards();
+            ifWinOnParent();
             alert("O's Win!");
             console.log("you Win");
           }
+          //Call function here (if the square points to its' parent run 'verifyBoards' else do nothing)
         }
       }
       if ($sqEq.eq(3).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(5).text() !== '') {
         if($sqEq.eq(3).text() === $sqEq.eq(4).text() && $sqEq.eq(3).text() === $sqEq.eq(5).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('x');
+            // varifyBoards();
+            ifWinOnParent();
             alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
             $(event.currentTarget).parent().addClass('done');
+            // varifyBoards();
+            ifWinOnParent();
             alert("O's Win!");
             console.log("you Win");
           }
@@ -354,11 +402,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(6).text() === $sqEq.eq(7).text() && $sqEq.eq(6).text() === $sqEq.eq(8).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('x');
+            // varifyBoards();
+            ifWinOnParent();
             alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
             $(event.currentTarget).parent().addClass('done');
+            // varifyBoards();
+            ifWinOnParent();
             alert("O's Win!");
             console.log("you Win");
           }
@@ -368,11 +420,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(0).text() === $sqEq.eq(3).text() && $sqEq.eq(0).text() === $sqEq.eq(6).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('x');
+            // varifyBoards();
+            ifWinOnParent();
             alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
             $(event.currentTarget).parent().addClass('done');
+            // varifyBoards();
+            ifWinOnParent();
             alert("O's Win!");
             console.log("you Win");
           }
@@ -382,11 +438,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(1).text() === $sqEq.eq(4).text() && $sqEq.eq(1).text() === $sqEq.eq(7).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('x');
+            // varifyBoards();
+            ifWinOnParent();
             alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
             $(event.currentTarget).parent().addClass('done');
+            // varifyBoards();
+            ifWinOnParent();
             alert("O's Win!");
             console.log("you Win");
           }
@@ -396,11 +456,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(2).text() === $sqEq.eq(5).text() && $sqEq.eq(2).text() === $sqEq.eq(8).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('x');
+            // varifyBoards();
+            ifWinOnParent();
             alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
             $(event.currentTarget).parent().addClass('done');
+            // varifyBoards();
+            ifWinOnParent();
             alert("O's Win!");
             console.log("you Win");
           }
@@ -410,11 +474,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(0).text() === $sqEq.eq(4).text() && $sqEq.eq(0).text() === $sqEq.eq(8).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('x');
+            // varifyBoards();
+            ifWinOnParent();
             alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
             $(event.currentTarget).parent().addClass('done');
+            // varifyBoards();
+            ifWinOnParent();
             alert("O's Win!");
             console.log("you Win");
           }
@@ -424,11 +492,16 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(2).text() === $sqEq.eq(4).text() && $sqEq.eq(2).text() === $sqEq.eq(6).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done');
+            $(event.currentTarget).parent().addClass('done').addClass('x');
+            //make function to change class to 'x'
+            // varifyBoards();
+            ifWinOnParent();
             alert("X's Win!");
             console.log("you Win");
           } else if (toggle === true) {
             $(event.currentTarget).parent().addClass('done');
+            // varifyBoards();
+            ifWinOnParent();
             alert("O's Win!");
             console.log("you Win");
           }
@@ -446,49 +519,7 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
 const newGame = () => {
   greyOut($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
 
-  // $r2B2.addClass('active');
-  // $r2B2.children().addClass('sq-active');
-  // $r2B2.children().removeClass('inActive');
-  //
-  //
-  // $r1B1.children().removeClass('sq-active');
-  // $r1B1.children().addClass('inActive');
-  //   $r1B1.removeClass('active');
-  //
-  //
-  // $r1B2.children().removeClass('sq-active');
-  // $r1B2.children().addClass('inActive');
-  //   $r1B2.removeClass('active');
-  //
-  //
-  // $r1B3.children().removeClass('sq-active');
-  // $r1B3.children().addClass('inActive');
-  //   $r1B3.removeClass('active');
-  //
-  //
-  // $r2B1.children().removeClass('sq-active');
-  // $r2B1.children().addClass('inActive');
-  //   $r2B1.removeClass('active');
-  //
-  //
-  // $r2B3.children().removeClass('sq-active');
-  // $r2B3.children().addClass('inActive');
-  //   $r2B3.removeClass('active');
-  //
-  //
-  // $r3B1.children().removeClass('sq-active');
-  // $r3B1.children().addClass('inActive');
-  //   $r3B1.removeClass('active');
-  //
-  //
-  // $r3B2.children().removeClass('sq-active');
-  // $r3B2.children().addClass('inActive');
-  //   $r3B2.removeClass('active');
-  //
-  //
-  // $r3B3.children().removeClass('sq-active');
-  // $r3B3.children().addClass('inActive');
-  //   $r3B3.removeClass('active');
+
 };
 
   newGame();
