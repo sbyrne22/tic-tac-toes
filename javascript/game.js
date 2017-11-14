@@ -37,6 +37,7 @@ makeRow();
   let toggle = true;
   let player1Wins = 0;
   let player2Wins = 0;
+  let win = false;
 //Boards
   const $r1B1 = $('#r-1-board-1');
   const $r1B2 = $('#r-1-board-2');
@@ -188,6 +189,7 @@ const runGame = () => { //Game Logic
 
         winSenerios();
         checkTie();
+        checkBigTie();
 
         if ($(event.currentTarget).hasClass('sq-1')) {
           if (!($($r1B1).hasClass('done'))) {
@@ -261,9 +263,21 @@ const runGame = () => { //Game Logic
     };
 };
 
+const checkBigTie = () => {
+  let overAllTie = true;
+  for (let i = 0; i < 9; i ++) { //Checks all the squares of a board to see if they have a text value, if they all do, it's a tie
+    if (!($allBoards[i].hasClass('done'))) {
+      overAllTie = false;
+    };
+  };
+  if (overAllTie === true && win === false) {
+    console.log(overAllTie);
+    alert('Its a Tie');
+  };
+};
+
 const checkTie = () => {
-  let $allSquares = []
-  $allSquares = $(event.currentTarget).parent().children();
+  let $allSquares = $(event.currentTarget).parent().children();
   let tie = true
 
   for (let i = 0; i < 9; i ++) { //Checks all the squares of a board to see if they have a text value, if they all do, it's a tie
@@ -298,7 +312,7 @@ const ifWinOnParent = () => {
   const $currentTarget = $(event.currentTarget);
   const $currentTargetParent = $(event.currentTarget).parent();
 
-  if ($($currentTarget).hasClass('sq-1') && $($currentTargetParent).attr('id') === ('r-1-board-1')) { //These are not comparing?
+  if ($($currentTarget).hasClass('sq-1') && $($currentTargetParent).attr('id') === ('r-1-board-1')) {
     varifyBoards();
   } else if ($($currentTarget).hasClass('sq-2') && $($currentTargetParent).attr('id') === ('r-1-board-2')) {
     varifyBoards();
@@ -307,9 +321,7 @@ const ifWinOnParent = () => {
   } else if ($($currentTarget).hasClass('sq-4') && $($currentTargetParent).attr('id') === ('r-2-board-1')) {
     varifyBoards();
   } else if ($($currentTarget).hasClass('sq-5') && $($currentTargetParent).attr('id') === ('r-2-board-2')) {
-      console.log('Win on Parent');
-      varifyBoards();
-
+    varifyBoards();
   } else if ($($currentTarget).hasClass('sq-6') && $($currentTargetParent).attr('id') === ('r-2-board-3')) {
     varifyBoards();
   } else if ($($currentTarget).hasClass('sq-7') && $($currentTargetParent).attr('id') === ('r-3-board-1')) {
@@ -507,6 +519,10 @@ const winSenerios = () => {
       }
 
 //-------------------------- End Big Board O's -------------------------
+
+//---------------------------- Check For Tie ---------------------------
+
+//-------------------------- End Check For Tie -------------------------
 };
 
 //-----End Game Functionality------------
