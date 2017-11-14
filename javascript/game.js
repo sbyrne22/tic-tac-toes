@@ -35,6 +35,8 @@ makeRow();
 //Variables------------------------------------------------------
   const $squares = $('.square');
   let toggle = true;
+  let player1Wins = 0;
+  let player2Wins = 0;
 //Boards
   const $r1B1 = $('#r-1-board-1');
   const $r1B2 = $('#r-1-board-2');
@@ -173,7 +175,7 @@ const runGame = () => { //Game Logic
 
 
     //Enter Code Here
-    // if (!($(event.currentTarget).parent().hasClass('done'))) { //Makes sure the board that will be affected hasn't alreadu been finished (ex: there was a tie, or x's or o's won)
+
       if ($(event.currentTarget).parent().hasClass('active')){ //Only the active board can be affected
 
         if (toggle === true) {
@@ -184,7 +186,7 @@ const runGame = () => { //Game Logic
           toggle = true;
         }
 
-        gamePlay();
+        winSenerios();
         checkTie();
 
         if ($(event.currentTarget).hasClass('sq-1')) {
@@ -257,9 +259,6 @@ const runGame = () => { //Game Logic
         //End Code Here
       };
     };
-  //  }// else if ($(event.currentTarget).parent().hasClass('done')){
-  //   //make all boards that don't have the class of done: active
-  // };
 };
 
 const checkTie = () => {
@@ -382,147 +381,138 @@ const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's 
 
 //-----Game Functionality----------------
 
-const gamePlay = () => {
+const winSenerios = () => {
   //squares childen of each board
   const $sqEq = $(event.currentTarget).parent().children();
   console.log($sqEq);
-
+//-------------------------- Small Boards -------------------------
   if ($sqEq.eq(0).text() !== '' && $sqEq.eq(1).text() !== '' && $sqEq.eq(2).text() !== '') {
         if($sqEq.eq(0).text() === $sqEq.eq(1).text() && $sqEq.eq(0).text() === $sqEq.eq(2).text()) {
-
-          if (toggle === false){
             changeClassOnWin();
             ifWinOnParent();
-            // alert("X's Win!");
-            // console.log("you Win");
-          } else if (toggle === true) {
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("O's Win!");
-            // console.log("you Win");
-          }
         }
       }
       if ($sqEq.eq(3).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(5).text() !== '') {
         if($sqEq.eq(3).text() === $sqEq.eq(4).text() && $sqEq.eq(3).text() === $sqEq.eq(5).text()) {
-
-          if (toggle === false){
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("X's Win!");
-            // console.log("you Win");
-          } else if (toggle === true) {
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("O's Win!");
-            // console.log("you Win");
-          }
+          changeClassOnWin();
+          ifWinOnParent();
         }
       }
       if ($sqEq.eq(6).text() !== '' && $sqEq.eq(7).text() !== '' && $sqEq.eq(8).text() !== '') {
         if($sqEq.eq(6).text() === $sqEq.eq(7).text() && $sqEq.eq(6).text() === $sqEq.eq(8).text()) {
-
-          if (toggle === false){
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("X's Win!");
-            // console.log("you Win");
-          } else if (toggle === true) {
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("O's Win!");
-            // console.log("you Win");
-          }
+          changeClassOnWin();
+          ifWinOnParent();
         }
       }
       if ($sqEq.eq(0).text() !== '' && $sqEq.eq(3).text() !== '' && $sqEq.eq(6).text() !== '') {
         if($sqEq.eq(0).text() === $sqEq.eq(3).text() && $sqEq.eq(0).text() === $sqEq.eq(6).text()) {
-
-          if (toggle === false){
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("X's Win!");
-            // console.log("you Win");
-          } else if (toggle === true) {
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("O's Win!");
-            // console.log("you Win");
-          }
+          changeClassOnWin();
+          ifWinOnParent();
         }
       }
       if ($sqEq.eq(1).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(7).text() !== '') {
         if($sqEq.eq(1).text() === $sqEq.eq(4).text() && $sqEq.eq(1).text() === $sqEq.eq(7).text()) {
-
-          if (toggle === false){
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("X's Win!");
-            // console.log("you Win");
-          } else if (toggle === true) {
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("O's Win!");
-            // console.log("you Win");
-          }
+          changeClassOnWin();
+          ifWinOnParent();
         }
       }
       if ($sqEq.eq(2).text() !== '' && $sqEq.eq(5).text() !== '' && $sqEq.eq(8).text() !== '') {
         if($sqEq.eq(2).text() === $sqEq.eq(5).text() && $sqEq.eq(2).text() === $sqEq.eq(8).text()) {
-
-          if (toggle === false){
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("X's Win!");
-            // console.log("you Win");
-          } else if (toggle === true) {
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("O's Win!");
-            // console.log("you Win");
-          }
+          changeClassOnWin();
+          ifWinOnParent();
         }
       }
       if ($sqEq.eq(0).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(8).text() !== '') {
         if($sqEq.eq(0).text() === $sqEq.eq(4).text() && $sqEq.eq(0).text() === $sqEq.eq(8).text()) {
-
-          if (toggle === false){
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("X's Win!");
-            // console.log("you Win");
-          } else if (toggle === true) {
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("O's Win!");
-            // console.log("you Win");
-          }
+          changeClassOnWin();
+          ifWinOnParent();
         }
       }
       if ($sqEq.eq(2).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(6).text() !== '') {
         if($sqEq.eq(2).text() === $sqEq.eq(4).text() && $sqEq.eq(2).text() === $sqEq.eq(6).text()) {
-
-          if (toggle === false){
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("X's Win!");
-            // console.log("you Win");
-          } else if (toggle === true) {
-            changeClassOnWin();
-            ifWinOnParent();
-            // alert("O's Win!");
-            // console.log("you Win");
-          }
+          changeClassOnWin();
+          ifWinOnParent();
         }
       }
+//------------------------ End Small Boards ------------------------
+//==================================================================
+//---------------------------- Big Board X's ---------------------------
+
+      if($r1B1.hasClass('x') && $r1B2.hasClass('x') && $r1B3.hasClass('x')) {
+        alert('Xs Win');
+      }
+
+      if($r2B1.hasClass('x') && $r2B2.hasClass('x') && $r2B3.hasClass('x')) {
+        alert('Xs Win');
+      }
+
+      if($r3B1.hasClass('x') && $r3B2.hasClass('x') && $r3B3.hasClass('x')) {
+        alert('Xs Win');
+      }
+
+      if($r1B1.hasClass('x') && $r2B1.hasClass('x') && $r3B1.hasClass('x')) {
+        ialert('Xs Win');
+      }
+
+      if($r1B2.hasClass('x') && $r2B2.hasClass('x') && $r3B2.hasClass('x')) {
+        alert('Xs Win');
+      }
+
+      if($r1B3.hasClass('x') && $r2B3.hasClass('x') && $r3B3.hasClass('x')) {
+        alert('Xs Win');
+      }
+
+      if($r1B1.hasClass('x') && $r2B2.hasClass('x') && $r3B3.hasClass('x')) {
+        alert('Xs Win');
+      }
+
+      if($r1B3.hasClass('x') && $r2B2.hasClass('x') && $r3B1.hasClass('x')) {
+          alert('Xs Win');
+      }
+
+//-------------------------- End Big Board X's -------------------------
+
+//---------------------------- Big Board O's ---------------------------
+
+      if($r1B1.hasClass('o') && $r1B2.hasClass('o') && $r1B3.hasClass('o')) {
+        alert('Os Win');
+      }
+
+      if($r2B1.hasClass('o') && $r2B2.hasClass('o') && $r2B3.hasClass('o')) {
+        alert('Os Win');
+      }
+
+      if($r3B1.hasClass('o') && $r3B2.hasClass('o') && $r3B3.hasClass('o')) {
+        alert('Os Win');
+      }
+
+      if($r1B1.hasClass('o') && $r2B1.hasClass('o') && $r3B1.hasClass('o')) {
+        ialert('Os Win');
+      }
+
+      if($r1B2.hasClass('o') && $r2B2.hasClass('o') && $r3B2.hasClass('o')) {
+        alert('Os Win');
+      }
+
+      if($r1B3.hasClass('o') && $r2B3.hasClass('o') && $r3B3.hasClass('o')) {
+        alert('Os Win');
+      }
+
+      if($r1B1.hasClass('o') && $r2B2.hasClass('o') && $r3B3.hasClass('o')) {
+        alert('Os Win');
+      }
+
+      if($r1B3.hasClass('o') && $r2B2.hasClass('o') && $r3B1.hasClass('o')) {
+        alert('Os Win');
+      }
+
+//-------------------------- End Big Board O's -------------------------
 };
 
 //-----End Game Functionality------------
 
 const newGame = () => {
   greyOut($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
-
-
 };
 
   newGame();
