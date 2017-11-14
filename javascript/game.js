@@ -185,10 +185,12 @@ const runGame = () => { //Game Logic
         }
 
         gamePlay();
+        checkTie();
 
         if ($(event.currentTarget).hasClass('sq-1')) {
           if (!($($r1B1).hasClass('done'))) {
             greyOut($r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
+
             // gamePlay($r1B1Square1, $r1B1Square2, $r1B1Square3, $r1B1Square4, $r1B1Square5, $r1B1Square6, $r1B1Square7, $r1B1Square8, $r1B1Square9, row1Board1Clicks);
           } else {
             varifyBoards();
@@ -260,6 +262,22 @@ const runGame = () => { //Game Logic
   // };
 };
 
+const checkTie = () => {
+  let $allSquares = []
+  $allSquares = $(event.currentTarget).parent().children();
+  let tie = true
+
+  for (let i = 0; i < 9; i ++) { //Checks all the squares of a board to see if they have a text value, if they all do, it's a tie
+    if ($allSquares.eq(i).text() === '') {
+      tie = false;
+    };
+  };
+  if (tie === true) {
+    console.log(tie);
+    $(event.currentTarget).parent().addClass('done').addClass('t').text('Tie');
+  };
+};
+
 const varifyBoards = () => {
 
     $allBoards.forEach(function(board) {
@@ -304,9 +322,17 @@ const ifWinOnParent = () => {
   }
 };
 
+const changeClassOnWin = () => {
+  $(event.currentTarget).parent().removeClass('main-board');
+  if (toggle === false) {
+    $(event.currentTarget).parent().addClass('done').addClass('x').text('X');
+  } else if (toggle === true) {
+    $(event.currentTarget).parent().addClass('done').addClass('o').text('O');
+
+  }
+}
+
 const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's out the squares of the boards that are not in play, and hoghlights the one that is as well as make it active
-
-
 
     highlightedB.addClass('active');
     highlightedB.children().addClass('sq-active');
@@ -356,7 +382,7 @@ const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's 
 
 //-----Game Functionality----------------
 
-const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) => {
+const gamePlay = () => {
   //squares childen of each board
   const $sqEq = $(event.currentTarget).parent().children();
   console.log($sqEq);
@@ -365,36 +391,31 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(0).text() === $sqEq.eq(1).text() && $sqEq.eq(0).text() === $sqEq.eq(2).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done').addClass('x');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("X's Win!");
-            console.log("you Win");
+            // alert("X's Win!");
+            // console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done').addClass('o');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("O's Win!");
-            console.log("you Win");
+            // alert("O's Win!");
+            // console.log("you Win");
           }
-          //Call function here (if the square points to its' parent run 'verifyBoards' else do nothing)
         }
       }
       if ($sqEq.eq(3).text() !== '' && $sqEq.eq(4).text() !== '' && $sqEq.eq(5).text() !== '') {
         if($sqEq.eq(3).text() === $sqEq.eq(4).text() && $sqEq.eq(3).text() === $sqEq.eq(5).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done').addClass('x');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("X's Win!");
-            console.log("you Win");
+            // alert("X's Win!");
+            // console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("O's Win!");
-            console.log("you Win");
+            // alert("O's Win!");
+            // console.log("you Win");
           }
         }
       }
@@ -402,17 +423,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(6).text() === $sqEq.eq(7).text() && $sqEq.eq(6).text() === $sqEq.eq(8).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done').addClass('x');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("X's Win!");
-            console.log("you Win");
+            // alert("X's Win!");
+            // console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("O's Win!");
-            console.log("you Win");
+            // alert("O's Win!");
+            // console.log("you Win");
           }
         }
       }
@@ -420,17 +439,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(0).text() === $sqEq.eq(3).text() && $sqEq.eq(0).text() === $sqEq.eq(6).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done').addClass('x');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("X's Win!");
-            console.log("you Win");
+            // alert("X's Win!");
+            // console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("O's Win!");
-            console.log("you Win");
+            // alert("O's Win!");
+            // console.log("you Win");
           }
         }
       }
@@ -438,17 +455,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(1).text() === $sqEq.eq(4).text() && $sqEq.eq(1).text() === $sqEq.eq(7).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done').addClass('x');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("X's Win!");
-            console.log("you Win");
+            // alert("X's Win!");
+            // console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("O's Win!");
-            console.log("you Win");
+            // alert("O's Win!");
+            // console.log("you Win");
           }
         }
       }
@@ -456,17 +471,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(2).text() === $sqEq.eq(5).text() && $sqEq.eq(2).text() === $sqEq.eq(8).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done').addClass('x');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("X's Win!");
-            console.log("you Win");
+            // alert("X's Win!");
+            // console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("O's Win!");
-            console.log("you Win");
+            // alert("O's Win!");
+            // console.log("you Win");
           }
         }
       }
@@ -474,17 +487,15 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(0).text() === $sqEq.eq(4).text() && $sqEq.eq(0).text() === $sqEq.eq(8).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done').addClass('x');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("X's Win!");
-            console.log("you Win");
+            // alert("X's Win!");
+            // console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("O's Win!");
-            console.log("you Win");
+            // alert("O's Win!");
+            // console.log("you Win");
           }
         }
       }
@@ -492,27 +503,19 @@ const gamePlay = (/*sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9, clickCount*/) =
         if($sqEq.eq(2).text() === $sqEq.eq(4).text() && $sqEq.eq(2).text() === $sqEq.eq(6).text()) {
 
           if (toggle === false){
-            $(event.currentTarget).parent().addClass('done').addClass('x');
-            //make function to change class to 'x'
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("X's Win!");
-            console.log("you Win");
+            // alert("X's Win!");
+            // console.log("you Win");
           } else if (toggle === true) {
-            $(event.currentTarget).parent().addClass('done');
-            // varifyBoards();
+            changeClassOnWin();
             ifWinOnParent();
-            alert("O's Win!");
-            console.log("you Win");
+            // alert("O's Win!");
+            // console.log("you Win");
           }
         }
       }
-      for (let i = 0; i < $sqEq.eq().length; i++){
-        if ($sqEq.eq(i).text !== ''){
-          console.log('Tie');
-        }
-      }
-}
+};
 
 //-----End Game Functionality------------
 

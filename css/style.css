@@ -55,6 +55,20 @@ body {
 .inActive {
   background: grey;
 }
+.x, .o {
+  height: 92px;
+  width: 92px;
+  margin: 10px;
+  display: inline-block;
+  text-align: center;
+  font-size: 100px;
+  line-height: 1;
+  vertical-align: top;
+}
+.t {
+  font-size: 70px;
+  vertical-align: top;
+}
 #id7, #id8, #id9 {
   margin-bottom: 10px;
 }
