@@ -38,8 +38,16 @@ makeRow();
   let player1Wins = 0;
   let player2Wins = 0;
   let player1Score = 0;
+  console.log(player1Score);
+  let player1ScoreDisplay = $('#player1Score');
   let player2Score = 0;
+  let player2ScoreDisplay = $('#player2Score');
   let win = false;
+  const $playButton = $('#playButton');
+  const $playAgainButton = $('#playAgainButton');
+  const $endGameButton = $('#endGameButton');
+  const $howToButton = $('#howToPlayButton')
+  const $closeButton = $('#close');
 //Boards
   const $r1B1 = $('#r-1-board-1');
   const $r1B2 = $('#r-1-board-2');
@@ -338,9 +346,11 @@ const changeClassOnWin = () => {
   if (toggle === false) {
     $(event.currentTarget).parent().addClass('done').addClass('x').text('X');
     player1Score += 1;
+    player1ScoreDisplay.append(player1Score);
   } else if (toggle === true) {
     $(event.currentTarget).parent().addClass('done').addClass('o').text('O');
     player2Score += 1;
+      player2ScoreDisplay.append(player2Score);
 
   }
 }
@@ -456,34 +466,42 @@ const winSenerios = () => {
         alert('Xs Win');
         player1Wins += 1;
         player1Score += 3;
+        endGame();
       } else if($r2B1.hasClass('x') && $r2B2.hasClass('x') && $r2B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
         player1Score += 3;
+        endGame();
       } else if($r3B1.hasClass('x') && $r3B2.hasClass('x') && $r3B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
         player1Score += 3;
+        endGame();
       } else if($r1B1.hasClass('x') && $r2B1.hasClass('x') && $r3B1.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
         player1Score += 3;
+        endGame();
       } else if($r1B2.hasClass('x') && $r2B2.hasClass('x') && $r3B2.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
         player1Score += 3;
+        endGame();
       } else if($r1B3.hasClass('x') && $r2B3.hasClass('x') && $r3B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
         player1Score += 3;
+        endGame();
       } else if($r1B1.hasClass('x') && $r2B2.hasClass('x') && $r3B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
         player1Score += 3;
+        endGame();
       } else if($r1B3.hasClass('x') && $r2B2.hasClass('x') && $r3B1.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
         player1Score += 3;
+        endGame();
       }
 
 //-------------------------- End Big Board X's -------------------------
@@ -494,34 +512,42 @@ const winSenerios = () => {
         alert('Os Win');
         player2Wins += 1;
         player2Score += 3;
+        endGame();
       } else if($r2B1.hasClass('o') && $r2B2.hasClass('o') && $r2B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
         player2Score += 3;
+        endGame();
       } else if($r3B1.hasClass('o') && $r3B2.hasClass('o') && $r3B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
         player2Score += 3;
+        endGame();
       } else if($r1B1.hasClass('o') && $r2B1.hasClass('o') && $r3B1.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
         player2Score += 3;
+        endGame();
       } else if($r1B2.hasClass('o') && $r2B2.hasClass('o') && $r3B2.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
         player2Score += 3;
+        endGame();
       } else if($r1B3.hasClass('o') && $r2B3.hasClass('o') && $r3B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
         player2Score += 3;
+        endGame();
       } else if($r1B1.hasClass('o') && $r2B2.hasClass('o') && $r3B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
         player2Score += 3;
+        endGame();
       } else if($r1B3.hasClass('o') && $r2B2.hasClass('o') && $r3B1.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
         player2Score += 3;
+        endGame();
       }
 
 //-------------------------- End Big Board O's -------------------------
@@ -530,24 +556,19 @@ const winSenerios = () => {
 //-----End Game Functionality------------
 
 const endGame = () => {
-  prompt('Do you want to play again? Yes or No', 'y or n');
-  // Ask the users if they want to play another round or reset the game
+  $allBoards.forEach(function(board) {
+  board.removeClass('active');
+  board.children().addClass('inActive');
+  });
+  $playAgainButton.css('display', 'inline-block');
+  $endGameButton.css('display', 'none');
 };
 
 const readyNextRound = () => { //reset all values except the players' scores, then call 'newGame'
   $allBoards.forEach(function(board) {
-      board.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
+      board.removeClass('x').removeClass('o').removeClass('t').removeClass('done');
+      board.children().text('');
   });
-
-  // $r1B1.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-  // $r1B2.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-  // $r1B3.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-  // $r2B1.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-  // $r2B2.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-  // $r2B3.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-  // $r3B1.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-  // $r3B2.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-  // $r3B3.text('').removeClass('x').removeClass('o').removeClass('t').removeClass('done');
   newGame();
 };
 
@@ -561,9 +582,25 @@ const reset = () => { //reset the players' scores, then call 'readyNextRound'
 
 const newGame = () => {
   greyOut($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
+  $playButton.css('display', 'none');
+  $playAgainButton.css('display', 'none');
+  $endGameButton.css('display', 'inline-block');
 };
 
-  newGame(); // Put in an on.click that's tied to a start game button
+$endGameButton.css('display', 'none');
+//---------- Buttons -----------
+  $howToButton.on('click', () => {
+    $('.howToModel').css('display', 'block');
+  });
+  $closeButton.on('click', () => {
+    $('.howToModel').css('display', 'none');
+  });
+
+  $endGameButton.on('click', endGame);
+
+  $playAgainButton.on('click', readyNextRound);
+
+  $playButton.on('click', newGame);
 
   $squares.on('click', runGame);
 

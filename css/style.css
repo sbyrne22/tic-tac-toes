@@ -14,6 +14,15 @@ body {
 .container {
   border: 1px solid blue;
 }
+.howToModel {
+  padding: 5px;
+  /*z-index: 1;
+  position: relative;*/
+  max-width: 700px;
+  margin: 1px auto 10px auto;
+  background: wheat;
+  display: none;
+}
 .buttonBox {
   text-align: center;
   margin: 0 auto;
@@ -54,7 +63,7 @@ body {
   line-height: 18px;
 }
 .active {
-  background: yellow;
+  border: 1px solid yellow;
 }
 .sq-active {
   background: white;
@@ -74,4 +83,7 @@ body {
 }
 #id7, #id8, #id9 {
   margin-bottom: 10px;
+}
+#playAgainButton {
+  display: none;
 }
