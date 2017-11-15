@@ -11,6 +11,12 @@ body {
   display: flex;
 
 }*/
+/*th, td {
+  text-align: center;
+}*/
+tr {
+  text-align: left;
+}
 .container {
   border: 1px solid blue;
 }
@@ -22,6 +28,15 @@ body {
   margin: 1px auto 10px auto;
   background: wheat;
   display: none;
+}
+.winsTable {
+  height: 50px;
+  min-width: 300px;
+  max-width: 905px;
+  border: 1px solid teal;
+  /*display: inline-block;*/
+  /*float: right;*/
+  margin: 5px 10px 5px 10px;
 }
 .buttonBox {
   text-align: center;

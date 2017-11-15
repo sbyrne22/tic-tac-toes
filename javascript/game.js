@@ -1,6 +1,7 @@
 $( () => {
   // console.log('Hey');
 
+const createGameBoard = () => {
   const $row1 = $('<div>').addClass('row-1');
   const $row2 = $('<div>').addClass('row-2');
   const $row3 = $('<div>').addClass('row-3');
@@ -28,7 +29,6 @@ $( () => {
       makeBoard($row3, ('r-3-board-' + (r + 1)), ('r3-B' + (r + 1) + '-Sq-'));
     }
   }
-
 makeRow();
 
 
@@ -37,11 +37,7 @@ makeRow();
   let toggle = true;
   let player1Wins = 0;
   let player2Wins = 0;
-  let player1Score = 0;
-  console.log(player1Score);
-  let player1ScoreDisplay = $('#player1Score');
-  let player2Score = 0;
-  let player2ScoreDisplay = $('#player2Score');
+  let gameValue = 0;
   let win = false;
   const $playButton = $('#playButton');
   const $playAgainButton = $('#playAgainButton');
@@ -49,17 +45,17 @@ makeRow();
   const $howToButton = $('#howToPlayButton')
   const $closeButton = $('#close');
 //Boards
-  const $r1B1 = $('#r-1-board-1');
-  const $r1B2 = $('#r-1-board-2');
-  const $r1B3 = $('#r-1-board-3');
-  const $r2B1 = $('#r-2-board-1');
-  const $r2B2 = $('#r-2-board-2');
-  const $r2B3 = $('#r-2-board-3');
-  const $r3B1 = $('#r-3-board-1');
-  const $r3B2 = $('#r-3-board-2');
-  const $r3B3 = $('#r-3-board-3');
+  let $r1B1 = $('#r-1-board-1');
+  let $r1B2 = $('#r-1-board-2');
+  let $r1B3 = $('#r-1-board-3');
+  let $r2B1 = $('#r-2-board-1');
+  let $r2B2 = $('#r-2-board-2');
+  let $r2B3 = $('#r-2-board-3');
+  let $r3B1 = $('#r-3-board-1');
+  let $r3B2 = $('#r-3-board-2');
+  let $r3B3 = $('#r-3-board-3');
 
-  const $allBoards = [$r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3];
+  let $allBoards = [$r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3];
 
 //Squares
   const $sq1 = $('.sq-1');
@@ -71,115 +67,6 @@ makeRow();
   const $sq7 = $('.sq-7');
   const $sq8 = $('.sq-8');
   const $sq9 = $('.sq-9');
-  // //-------Row1-Board1---------
-  // const $r1B1Square1 = $('#r1-B1-Sq-1');
-  // const $r1B1Square2 = $('#r1-B1-Sq-2');
-  // const $r1B1Square3 = $('#r1-B1-Sq-3');
-  // const $r1B1Square4 = $('#r1-B1-Sq-4');
-  // const $r1B1Square5 = $('#r1-B1-Sq-5');
-  // const $r1B1Square6 = $('#r1-B1-Sq-6');
-  // const $r1B1Square7 = $('#r1-B1-Sq-7');
-  // const $r1B1Square8 = $('#r1-B1-Sq-8');
-  // const $r1B1Square9 = $('#r1-B1-Sq-9');
-  // let row1Board1Clicks = 0;
-  //
-  // //-------Row1-Board2---------
-  // const $r1B2Square1 = $('#r1-B2-Sq-1');
-  // const $r1B2Square2 = $('#r1-B2-Sq-2');
-  // const $r1B2Square3 = $('#r1-B2-Sq-3');
-  // const $r1B2Square4 = $('#r1-B2-Sq-4');
-  // const $r1B2Square5 = $('#r1-B2-Sq-5');
-  // const $r1B2Square6 = $('#r1-B2-Sq-6');
-  // const $r1B2Square7 = $('#r1-B2-Sq-7');
-  // const $r1B2Square8 = $('#r1-B2-Sq-8');
-  // const $r1B2Square9 = $('#r1-B2-Sq-9');
-  // let row1Board2Clicks = 0;
-  //
-  // //-------Row1-Board3---------
-  // const $r1B3Square1 = $('#r1-B3-Sq-1');
-  // const $r1B3Square2 = $('#r1-B3-Sq-2');
-  // const $r1B3Square3 = $('#r1-B3-Sq-3');
-  // const $r1B3Square4 = $('#r1-B3-Sq-4');
-  // const $r1B3Square5 = $('#r1-B3-Sq-5');
-  // const $r1B3Square6 = $('#r1-B3-Sq-6');
-  // const $r1B3Square7 = $('#r1-B3-Sq-7');
-  // const $r1B3Square8 = $('#r1-B3-Sq-8');
-  // const $r1B3Square9 = $('#r1-B3-Sq-9');
-  // let row1Board3Clicks = 0;
-  //
-  // //-------Row2-Board1---------
-  // const $r2B1Square1 = $('#r2-B1-Sq-1');
-  // const $r2B1Square2 = $('#r2-B1-Sq-2');
-  // const $r2B1Square3 = $('#r2-B1-Sq-3');
-  // const $r2B1Square4 = $('#r2-B1-Sq-4');
-  // const $r2B1Square5 = $('#r2-B1-Sq-5');
-  // const $r2B1Square6 = $('#r2-B1-Sq-6');
-  // const $r2B1Square7 = $('#r2-B1-Sq-7');
-  // const $r2B1Square8 = $('#r2-B1-Sq-8');
-  // const $r2B1Square9 = $('#r2-B1-Sq-9');
-  // let row2Board1Clicks = 0;
-  //
-  // //-------Row2-Board2---------
-  // const $r2B2Square1 = $('#r2-B2-Sq-1');
-  // const $r2B2Square2 = $('#r2-B2-Sq-2');
-  // const $r2B2Square3 = $('#r2-B2-Sq-3');
-  // const $r2B2Square4 = $('#r2-B2-Sq-4');
-  // const $r2B2Square5 = $('#r2-B2-Sq-5');
-  // const $r2B2Square6 = $('#r2-B2-Sq-6');
-  // const $r2B2Square7 = $('#r2-B2-Sq-7');
-  // const $r2B2Square8 = $('#r2-B2-Sq-8');
-  // const $r2B2Square9 = $('#r2-B2-Sq-9');
-  // let row2Board2Clicks = 0;
-  //
-  // //-------Row2-Board3---------
-  // const $r2B3Square1 = $('#r2-B3-Sq-1');
-  // const $r2B3Square2 = $('#r2-B3-Sq-2');
-  // const $r2B3Square3 = $('#r2-B3-Sq-3');
-  // const $r2B3Square4 = $('#r2-B3-Sq-4');
-  // const $r2B3Square5 = $('#r2-B3-Sq-5');
-  // const $r2B3Square6 = $('#r2-B3-Sq-6');
-  // const $r2B3Square7 = $('#r2-B3-Sq-7');
-  // const $r2B3Square8 = $('#r2-B3-Sq-8');
-  // const $r2B3Square9 = $('#r2-B3-Sq-9');
-  // let row2Board3Clicks = 0;
-  //
-  // //-------Row3-Board1---------
-  // const $r3B1Square1 = $('#r3-B1-Sq-1');
-  // const $r3B1Square2 = $('#r3-B1-Sq-2');
-  // const $r3B1Square3 = $('#r3-B1-Sq-3');
-  // const $r3B1Square4 = $('#r3-B1-Sq-4');
-  // const $r3B1Square5 = $('#r3-B1-Sq-5');
-  // const $r3B1Square6 = $('#r3-B1-Sq-6');
-  // const $r3B1Square7 = $('#r3-B1-Sq-7');
-  // const $r3B1Square8 = $('#r3-B1-Sq-8');
-  // const $r3B1Square9 = $('#r3-B1-Sq-9');
-  // let row3Board1Clicks = 0;
-  //
-  // //-------Row3-Board2---------
-  // const $r3B2Square1 = $('#r3-B2-Sq-1');
-  // const $r3B2Square2 = $('#r3-B2-Sq-2');
-  // const $r3B2Square3 = $('#r3-B2-Sq-3');
-  // const $r3B2Square4 = $('#r3-B2-Sq-4');
-  // const $r3B2Square5 = $('#r3-B2-Sq-5');
-  // const $r3B2Square6 = $('#r3-B2-Sq-6');
-  // const $r3B2Square7 = $('#r3-B2-Sq-7');
-  // const $r3B2Square8 = $('#r3-B2-Sq-8');
-  // const $r3B2Square9 = $('#r3-B2-Sq-9');
-  // let row3Board2Clicks = 0;
-  //
-  // //-------Row3-Board3---------
-  // const $r3B3Square1 = $('#r3-B3-Sq-1');
-  // const $r3B3Square2 = $('#r3-B3-Sq-2');
-  // const $r3B3Square3 = $('#r3-B3-Sq-3');
-  // const $r3B3Square4 = $('#r3-B3-Sq-4');
-  // const $r3B3Square5 = $('#r3-B3-Sq-5');
-  // const $r3B3Square6 = $('#r3-B3-Sq-6');
-  // const $r3B3Square7 = $('#r3-B3-Sq-7');
-  // const $r3B3Square8 = $('#r3-B3-Sq-8');
-  // const $r3B3Square9 = $('#r3-B3-Sq-9');
-  // let row3Board3Clicks = 0;
-
-
 
 const runGame = () => { //Game Logic
   if ($(event.currentTarget).text() === '') { //makes sure the element that is gonna be affected doesn't all ready have a text value
@@ -283,6 +170,7 @@ const checkBigTie = () => {
   if (overAllTie === true && win === false) {
     // console.log(overAllTie);
     alert('Its a Tie');
+    endGame();
   };
 };
 
@@ -345,12 +233,12 @@ const ifWinOnParent = () => {
 const changeClassOnWin = () => {
   if (toggle === false) {
     $(event.currentTarget).parent().addClass('done').addClass('x').text('X');
-    player1Score += 1;
-    player1ScoreDisplay.append(player1Score);
+    // player1Score += 1;
+    // player1ScoreDisplay.text() = player1Score;
   } else if (toggle === true) {
     $(event.currentTarget).parent().addClass('done').addClass('o').text('O');
-    player2Score += 1;
-      player2ScoreDisplay.append(player2Score);
+    // player2Score += 1;
+    //   player2ScoreDisplay.append(player2Score);
 
   }
 }
@@ -465,43 +353,43 @@ const winSenerios = () => {
       if($r1B1.hasClass('x') && $r1B2.hasClass('x') && $r1B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
-        player1Score += 3;
         endGame();
+        win = true;
       } else if($r2B1.hasClass('x') && $r2B2.hasClass('x') && $r2B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
-        player1Score += 3;
         endGame();
+        win = true;
       } else if($r3B1.hasClass('x') && $r3B2.hasClass('x') && $r3B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
-        player1Score += 3;
         endGame();
+        win = true;
       } else if($r1B1.hasClass('x') && $r2B1.hasClass('x') && $r3B1.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
-        player1Score += 3;
         endGame();
+        win = true;
       } else if($r1B2.hasClass('x') && $r2B2.hasClass('x') && $r3B2.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
-        player1Score += 3;
         endGame();
+        win = true;
       } else if($r1B3.hasClass('x') && $r2B3.hasClass('x') && $r3B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
-        player1Score += 3;
         endGame();
+        win = true;
       } else if($r1B1.hasClass('x') && $r2B2.hasClass('x') && $r3B3.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
-        player1Score += 3;
         endGame();
+        win = true;
       } else if($r1B3.hasClass('x') && $r2B2.hasClass('x') && $r3B1.hasClass('x')) {
         alert('Xs Win');
         player1Wins += 1;
-        player1Score += 3;
         endGame();
+        win = true;
       }
 
 //-------------------------- End Big Board X's -------------------------
@@ -511,44 +399,44 @@ const winSenerios = () => {
       if($r1B1.hasClass('o') && $r1B2.hasClass('o') && $r1B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
-        player2Score += 3;
         endGame();
+        win = true;
       } else if($r2B1.hasClass('o') && $r2B2.hasClass('o') && $r2B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
-        player2Score += 3;
         endGame();
+        win = true;
       } else if($r3B1.hasClass('o') && $r3B2.hasClass('o') && $r3B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
-        player2Score += 3;
         endGame();
+        win = true;
       } else if($r1B1.hasClass('o') && $r2B1.hasClass('o') && $r3B1.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
-        player2Score += 3;
         endGame();
+        win = true;
       } else if($r1B2.hasClass('o') && $r2B2.hasClass('o') && $r3B2.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
-        player2Score += 3;
         endGame();
+        win = true;
       } else if($r1B3.hasClass('o') && $r2B3.hasClass('o') && $r3B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
-        player2Score += 3;
         endGame();
+        win = true;
       } else if($r1B1.hasClass('o') && $r2B2.hasClass('o') && $r3B3.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
-        player2Score += 3;
         endGame();
+        win = true;
       } else if($r1B3.hasClass('o') && $r2B2.hasClass('o') && $r3B1.hasClass('o')) {
         alert('Os Win');
         player2Wins += 1;
-        player2Score += 3;
         endGame();
-      }
+        win = true;
+      };
 
 //-------------------------- End Big Board O's -------------------------
 
@@ -556,39 +444,47 @@ const winSenerios = () => {
 //-----End Game Functionality------------
 
 const endGame = () => {
+  console.log('EndGame triggered');
   $allBoards.forEach(function(board) {
   board.removeClass('active');
   board.children().addClass('inActive');
+  console.log('EndGame triggered');
   });
+  console.log('EndGame triggered');
   $playAgainButton.css('display', 'inline-block');
   $endGameButton.css('display', 'none');
 };
 
 const readyNextRound = () => { //reset all values except the players' scores, then call 'newGame'
-  $allBoards.forEach(function(board) {
-      board.removeClass('x').removeClass('o').removeClass('t').removeClass('done');
-      board.children().text('');
-  });
+    // re-create the board
+
+    // $allBoards.forEach(function(board) {
+    // board.removeClass('x').removeClass('o').removeClass('t');
+    // board.children().text('')
+    // });
+
+  $('.row-1').remove();
+  $('.row-2').remove();
+  $('.row-3').remove();
+
+  createGameBoard();
   newGame();
+  $playAgainButton.css('display', 'none');
+  // $playButton.css('display', 'inline-block');
 };
 
-const reset = () => { //reset the players' scores, then call 'readyNextRound'
-  player1Wins = 0;
-  player2Wins = 0;
-  player1Score = 0;
-  player2Score = 0;
-  readyNextRound();
-};
+
 
 const newGame = () => {
-  greyOut($r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3);
+  greyOut(/*$r2B2, $r1B1, $r1B2, $r1B3, $r2B1, $r2B3, $r3B1, $r3B2, $r3B3*/ $('#r-2-board-2'), $('#r-1-board-2'), $('#r-1-board-3'), $('#r-2-board-1'), $('#r-1-board-1'), $('#r-2-board-3'), $('#r-3-board-1'), $('#r-3-board-2'), $('#r-3-board-3'));
   $playButton.css('display', 'none');
   $playAgainButton.css('display', 'none');
   $endGameButton.css('display', 'inline-block');
 };
 
-$endGameButton.css('display', 'none');
 //---------- Buttons -----------
+  $endGameButton.css('display', 'none');
+
   $howToButton.on('click', () => {
     $('.howToModel').css('display', 'block');
   });
@@ -603,5 +499,18 @@ $endGameButton.css('display', 'none');
   $playButton.on('click', newGame);
 
   $squares.on('click', runGame);
+
+};
+createGameBoard();
+
+//score and Reset ---------------------------------
+
+const reset = () => { //reset the players' scores, then call 'readyNextRound'
+  player1Wins = 0;
+  player2Wins = 0;
+
+  readyNextRound();
+};
+
 
 });
