@@ -300,14 +300,14 @@ const xWins = () => {
   $($('.xTurn')).text('X Wins');
   $($('.xTurn')).css('display', 'block');
   $($('.oTurn')).css('display', 'none');
-  alert('Xs Win');
+  alert('X Wins');
   // player1Wins += 1;
 }
 const oWins = () => {
   $($('.oTurn')).text('O Wins');
   $($('.xTurn')).css('display', 'none');
   $($('.oTurn')).css('display', 'block');
-  alert('Os Win');
+  alert('O Wins');
   // player2Wins += 1;
 }
 //-----Game Functionality----------------

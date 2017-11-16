@@ -41,7 +41,9 @@ button {
 }
 .container {
   text-align: center;
+  max-width: 800px;
   /*border: 1px solid blue;*/
+  margin: 0 auto;
 }
 .howToModel {
   border-radius: 0px 0px 5px 5px;
@@ -109,8 +111,9 @@ button {
   /*color: #F27898;*/
 }
 .active {
+  border-radius: 5px;
   border: 1px solid #F79F08;
-  background: white;
+  /*background: white;*/
 }
 .sq-active {
   background: white;
