@@ -3,6 +3,8 @@ $( () => {
   let player1Wins = 0;
   let player2Wins = 0;
 
+  //------------------------------- Begin Game ---------------------------------
+
 const createGameBoard = () => {
   const $row1 = $('<div>').addClass('row-1');
   const $row2 = $('<div>').addClass('row-2');
@@ -70,7 +72,6 @@ makeRow();
 const runGame = () => { //Game Logic
   if ($(event.currentTarget).text() === '') { //makes sure the element that is gonna be affected doesn't all ready have a text value
 
-
     //Enter Code Here
 
       if ($(event.currentTarget).parent().hasClass('active')){ //Only the active board can be affected
@@ -87,7 +88,10 @@ const runGame = () => { //Game Logic
         checkTie();
         checkBigTie();
 
-        if ($(event.currentTarget).hasClass('sq-1')) {
+        console.log('runGame');
+        if (win === true) {
+
+      } else if ($(event.currentTarget).hasClass('sq-1')) {
           if (!($($r1B1).hasClass('done'))) {
             greyOut($r1B1, $r1B2, $r1B3, $r2B1, $r2B2, $r2B3, $r3B1, $r3B2, $r3B3);
 
@@ -189,6 +193,7 @@ const checkTie = () => {
 };
 
 const varifyBoards = () => {
+  console.log('verifyBoards');
     $allBoards.forEach(function(board) {
       //check each board for win state
       if (!(board.hasClass('done'))){
@@ -243,7 +248,7 @@ const changeClassOnWin = () => {
 }
 
 const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's out the squares of the boards that are not in play, and hoghlights the one that is as well as make it active
-
+console.log('greyOut');
     highlightedB.addClass('active');
     highlightedB.children().addClass('sq-active');
     highlightedB.children().removeClass('inActive');
@@ -454,7 +459,7 @@ const winSenerios = () => {
       };
       if (win === true) {
         endGame();
-      }
+      };
 
 //-------------------------- End Big Board O's -------------------------
 
@@ -464,9 +469,9 @@ const winSenerios = () => {
 const endGame = () => {
   console.log('EndGame triggered');
   $allBoards.forEach(function(board) {
-  // board.removeClass('active');
-  board.css('display', 'none');
-  // board.children().addClass('inActive');
+  board.removeClass('active');
+  
+  board.children().addClass('inActive');
   console.log('EndGame triggered');
   });
   console.log('EndGame triggered');
