@@ -14,6 +14,9 @@ The object of the game is to get 3 in a row, though there's a catch. The board i
 # My Process--
 First I dynamically created the board in jQuery. The board consists of 9 tic-tac-toe boards and while to boards are being created they are each given a unique ID. I then made the text toggle from placing x's to o's every time the user clicks on an open square that has no text Next I determined when a either x's or o's won on a board, or if there was a tie on a board and if then then I gave that board a class of done which would stop if from being active again. Then I made it so when a square was clicked the next active board would be the board that takes up that spot on the big board. After that I made a start game function that would make the middle board be the first board that's active. Next I wrote a function that would determine if a board had tied and then if the entire game was a tie. If x's or O's won, the game will let the users know accordingly as well as if the game ties. Then the remaining boards will not be active thanks to the endGame function. The next thing I did was make the game re-playable by putting everything that runs the game and creates the board inside a function and then calling that function when the user('s) click on the play again button.
 
+# In The Future--
+I had planned to make a scoresheet that would update after each round and I would like to add that in the future.
+
 # Author
 - Sean Byrne
 

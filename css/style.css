@@ -26,32 +26,43 @@ tr {
 button {
   font-family: 'Josefin Sans', sans-serif;
 }
+.xTurn {
+  text-align: center;
+  display: none;
+  font-size: 30px;
+  color: #ffff;
+  margin: 0 auto;
+}
+.oTurn {
+  text-align: center;
+  display: none;
+  font-size: 30px;
+  margin: 0 auto;
+}
 .container {
+  text-align: center;
   /*border: 1px solid blue;*/
 }
 .howToModel {
   border-radius: 0px 0px 5px 5px;
   padding: 8px;
-  /*z-index: 1;
-  position: relative;*/
-  max-height: 334px;
-  max-width: 320px;
+  height: 334px;
+  width: 320px;
   margin: 1px auto 10px auto;
   background: #A2F9FF;
   position: relative;
   z-index: 2;
   display: none;
   overflow: scroll;
+  font-size: 13px;
 }
-.winsTable {
+/*.winsTable {
   height: 50px;
   min-width: 300px;
   max-width: 905px;
   border: 1px solid teal;
-  /*display: inline-block;*/
-  /*float: right;*/
   margin: 5px 10px 5px 10px;
-}
+}*/
 .buttonBox {
   padding: 7px 0 0 0;
   border-radius: 5px 5px 0px 0px;
@@ -60,8 +71,8 @@ button {
   max-width: 336px;
   background: #F79F08;
   height: 30px;
-  /*border: 1px solid orange;*/
 }
+
 .gameArea {
   border-radius: 0px 0px 5px 5px;
   height: 340px;
@@ -120,10 +131,14 @@ button {
 .t {
   font-size: 70px;
   vertical-align: top;
+  color: #C1872A;
 }
 #id7, #id8, #id9 {
   margin-bottom: 10px;
 }
 #playAgainButton {
   display: none;
+}
+#close {
+  background: #CC1A10;
 }

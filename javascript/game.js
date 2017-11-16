@@ -77,9 +77,13 @@ const runGame = () => { //Game Logic
       if ($(event.currentTarget).parent().hasClass('active')){ //Only the active board can be affected
 
         if (toggle === true) {
+          $($('.xTurn')).css('display', 'none');
+          $($('.oTurn')).css('display', 'block');
           $(event.currentTarget).text('x');
           toggle = false;
         } else if (toggle === false) {
+          $($('.xTurn')).css('display', 'block');
+          $($('.oTurn')).css('display', 'none');
           $(event.currentTarget).text('o');
           toggle = true;
         }
@@ -237,15 +241,12 @@ const ifWinOnParent = () => {
 const changeClassOnWin = () => {
   if (toggle === false) {
     $(event.currentTarget).parent().addClass('done').addClass('x').text('X');
-    // player1Score += 1;
-    // player1ScoreDisplay.text() = player1Score;
+
   } else if (toggle === true) {
     $(event.currentTarget).parent().addClass('done').addClass('o').text('O');
-    // player2Score += 1;
-    //   player2ScoreDisplay.append(player2Score);
 
   }
-}
+};
 
 const greyOut = (highlightedB, b2, b3, b4, b5 , b6 , b7 , b8, b9) => { //Grey's out the squares of the boards that are not in play, and hoghlights the one that is as well as make it active
 console.log('greyOut');
@@ -295,6 +296,20 @@ console.log('greyOut');
 
 };
 
+const xWins = () => {
+  $($('.xTurn')).text('X Wins');
+  $($('.xTurn')).css('display', 'block');
+  $($('.oTurn')).css('display', 'none');
+  alert('Xs Win');
+  // player1Wins += 1;
+}
+const oWins = () => {
+  $($('.oTurn')).text('O Wins');
+  $($('.xTurn')).css('display', 'none');
+  $($('.oTurn')).css('display', 'block');
+  alert('Os Win');
+  // player2Wins += 1;
+}
 //-----Game Functionality----------------
 
 const winSenerios = () => {
@@ -355,52 +370,36 @@ const winSenerios = () => {
 //---------------------------- Big Board X's ---------------------------
 
       if($r1B1.hasClass('x') && $r1B2.hasClass('x') && $r1B3.hasClass('x')) {
-        // endGame();
-        alert('Xs Win');
-        player1Wins += 1;
-        // endGame();
+        xWins();
+
         win = true;
       } else if($r2B1.hasClass('x') && $r2B2.hasClass('x') && $r2B3.hasClass('x')) {
-        // endGame();
-        alert('Xs Win');
-        player1Wins += 1;
-        // endGame();
+        xWins();
+
         win = true;
       } else if($r3B1.hasClass('x') && $r3B2.hasClass('x') && $r3B3.hasClass('x')) {
-        // endGame();
-        alert('Xs Win');
-        player1Wins += 1;
-        // endGame();
+        xWins();
+
         win = true;
       } else if($r1B1.hasClass('x') && $r2B1.hasClass('x') && $r3B1.hasClass('x')) {
-        // endGame();
-        alert('Xs Win');
-        player1Wins += 1;
-        // endGame();
+        xWins();
+
         win = true;
       } else if($r1B2.hasClass('x') && $r2B2.hasClass('x') && $r3B2.hasClass('x')) {
-        // endGame();
-        alert('Xs Win');
-        player1Wins += 1;
-        // endGame();
+        xWins();
+
         win = true;
       } else if($r1B3.hasClass('x') && $r2B3.hasClass('x') && $r3B3.hasClass('x')) {
-        // endGame();
-        alert('Xs Win');
-        player1Wins += 1;
-        // endGame();
+        xWins();
+
         win = true;
       } else if($r1B1.hasClass('x') && $r2B2.hasClass('x') && $r3B3.hasClass('x')) {
-        // endGame();
-        alert('Xs Win');
-        player1Wins += 1;
-        // endGame();
+        xWins();
+
         win = true;
       } else if($r1B3.hasClass('x') && $r2B2.hasClass('x') && $r3B1.hasClass('x')) {
-        // endGame();
-        alert('Xs Win');
-        player1Wins += 1;
-        // endGame();
+        $xWins();
+
         win = true;
       }
 
@@ -409,52 +408,36 @@ const winSenerios = () => {
 //---------------------------- Big Board O's ---------------------------
 
       if($r1B1.hasClass('o') && $r1B2.hasClass('o') && $r1B3.hasClass('o')) {
-        // endGame();
-        alert('Os Win');
-        player2Wins += 1;
-        // endGame();
+        oWins();
+
         win = true;
       } else if($r2B1.hasClass('o') && $r2B2.hasClass('o') && $r2B3.hasClass('o')) {
-        // endGame();
-        alert('Os Win');
-        player2Wins += 1;
-        // endGame();
+        oWins();
+
         win = true;
       } else if($r3B1.hasClass('o') && $r3B2.hasClass('o') && $r3B3.hasClass('o')) {
-        // endGame();
-        alert('Os Win');
-        player2Wins += 1;
-        // endGame();
+        oWins();
+
         win = true;
       } else if($r1B1.hasClass('o') && $r2B1.hasClass('o') && $r3B1.hasClass('o')) {
-        // endGame();
-        alert('Os Win');
-        player2Wins += 1;
-        // endGame();
+        oWins();
+
         win = true;
       } else if($r1B2.hasClass('o') && $r2B2.hasClass('o') && $r3B2.hasClass('o')) {
-        // endGame();
-        alert('Os Win');
-        player2Wins += 1;
-        // endGame();
+        oWins();
+
         win = true;
       } else if($r1B3.hasClass('o') && $r2B3.hasClass('o') && $r3B3.hasClass('o')) {
-        // endGame();
-        alert('Os Win');
-        player2Wins += 1;
-        // endGame();
+        oWins();
+
         win = true;
       } else if($r1B1.hasClass('o') && $r2B2.hasClass('o') && $r3B3.hasClass('o')) {
-        // endGame();
-        alert('Os Win');
-        player2Wins += 1;
-        // endGame();
+        oWins();
+
         win = true;
       } else if($r1B3.hasClass('o') && $r2B2.hasClass('o') && $r3B1.hasClass('o')) {
-        // endGame();
-        alert('Os Win');
-        player2Wins += 1;
-        // endGame();
+        oWins();
+
         win = true;
       };
       if (win === true) {
@@ -470,7 +453,7 @@ const endGame = () => {
   console.log('EndGame triggered');
   $allBoards.forEach(function(board) {
   board.removeClass('active');
-  
+
   board.children().addClass('inActive');
   console.log('EndGame triggered');
   });
@@ -480,12 +463,10 @@ const endGame = () => {
 };
 
 const readyNextRound = () => { //reset all values except the players' scores, then call 'newGame'
-    // re-create the board
-
-    // $allBoards.forEach(function(board) {
-    // board.removeClass('x').removeClass('o').removeClass('t');
-    // board.children().text('')
-    // });
+  $($('.xTurn')).text('X');
+  $($('.oTurn')).text('O');
+  $($('.xTurn')).css('display', 'none');
+  $($('.oTurn')).css('display', 'none');
 
   $('.row-1').remove();
   $('.row-2').remove();
