@@ -26,6 +26,9 @@ tr {
 button {
   font-family: 'Josefin Sans', sans-serif;
 }
+h5 {
+  font-family: 'Josefin Sans', sans-serif;
+}
 .xTurn {
   text-align: center;
   display: none;
