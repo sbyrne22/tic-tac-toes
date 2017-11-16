@@ -58,7 +58,7 @@ h5 {
   position: relative;
   z-index: 2;
   display: none;
-  overflow: scroll;
+  /*overflow: scroll;*/
   font-size: 13px;
 }
 /*.winsTable {
