@@ -20,25 +20,23 @@
           <th>Game 1</th>
         </tr>
         <tr id="player1">
-          <td>Sean</td>
-          <td>w</td>
+          <td>X's</td>
+          <td>win</td>
+        </tr>
+        <tr id="player2">
+          <td>O's</td>
+          <td>lose</td>
         </tr>
       </table>
-      <h2>Player 1:</h2>
-      <h3 id='player1Name'></h3>
-      <!-- <h3 id='player1Score'></h3> -->
-
-      <h2>Player 2:</h2>
-      <h3 id='player2Name'></h3>
-      <!-- <h3 id='player2Score'></h3> -->
 
       <div class="buttonBox">
         <button id='playButton' type="button">Play</button>
         <button id='playAgainButton' type="button">Play Again</button>
         <button id='howToPlayButton' type="button">How-to-play</button>
         <div class="howToModel">
+          <button id='close' type="button">x</button>
           <p>The object of the game is to get 3 in a row, though there's a catch. The board is made up of 9 tic-tac-toe boards. You must win a board for your piece to place there, win 3 boards in a row either horizontally, vertically, or diagonally and you win the game. Wait! there's more, at the start of the game only the middle board is active and depending where you place your piece a different board will be active. Think of each small board as a directory of the big board, if you place your piece in the top right corner of a small board, then the next player has to place their peice in the board located in the top right corner. If the board you're supposed to go to has been completed then all the boards that have not been completed will be active for the next players' turn. Player 1 is 'X's and player 2 is 'O's and remember 'X' goes first!</p>
-          <button id='close' type="button">close</button>
+
         </div>
         <button id='endGameButton' type="button">End Game</button>
       </div>
