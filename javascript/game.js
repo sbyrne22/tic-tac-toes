@@ -398,7 +398,7 @@ const winSenerios = () => {
 
         win = true;
       } else if($r1B3.hasClass('x') && $r2B2.hasClass('x') && $r3B1.hasClass('x')) {
-        $xWins();
+        xWins();
 
         win = true;
       }
